@@ -1,20 +1,20 @@
 //
-//  ViewController.m
+//  TransitionColorsViewController.m
 //  AppTest
 //
 //  Created by wesley chen on 15/7/31.
 //
 //
 
-#import "ViewController.h"
+#import "TransitionColorsViewController.h"
 #import "UIColor+Addition.h"
 
-@interface ViewController ()
+@interface TransitionColorsViewController ()
 @property (nonatomic, strong) UILabel *fromLabel;
 @property (nonatomic, strong) UILabel *toLabel;
 @end
 
-@implementation ViewController
+@implementation TransitionColorsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,7 +22,7 @@
     
     CGSize screenSize = [[UIScreen mainScreen] bounds].size;
     
-    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(20, 20, screenSize.width - 2 * 20, 30)];
+    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(20, 20 + 64, screenSize.width - 2 * 20, 30)];
     [slider addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
     slider.maximumValue = 1.0;
     slider.minimumValue = 0.0;

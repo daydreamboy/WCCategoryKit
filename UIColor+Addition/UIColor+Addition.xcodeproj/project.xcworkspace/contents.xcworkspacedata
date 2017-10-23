@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:UIColor+Addition.xcodeproj">
+      location = "self:/Users/wesley_chen/GitHub_Projcets/WCCategoryKit/UIColor+Addition/UIColor+Addition.xcodeproj">
    </FileRef>
 </Workspace>

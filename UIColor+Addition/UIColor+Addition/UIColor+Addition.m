@@ -21,6 +21,15 @@
     return color;
 }
 
++ (UIColor *)randomRGBAColor {
+    CGFloat red = arc4random() % 255 / 255.0f;
+    CGFloat green = arc4random() % 255 / 255.0f;
+    CGFloat blue = arc4random() % 255 / 255.0f;
+    CGFloat alpha = arc4random() % 10 / 10.0f;
+    UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+    return color;
+}
+
 /*!
  *  Exchange two colors with progress
  *
@@ -58,6 +67,31 @@
  */
 - (UIColor *)colorWithAlpha:(CGFloat)alpha {
     return [self colorWithAlphaComponent:alpha];
+}
+
+#pragma mark - Color Convertion
+
++ (NSString *)RGBAHexStringWithColor:(UIColor *)color {
+    CGFloat r, g, b, a;
+    [self componentsOfRed:&r green:&g blue:&b alpha:&a fromColor:color];
+    
+    return [NSString stringWithFormat:@"#%02lX%02lX%02lX%02lX",
+            lroundf(r * 255),
+            lroundf(g * 255),
+            lroundf(b * 255),
+            lroundf(a * 255)
+            ];
+}
+
++ (NSString *)RGBHexStringWithColor:(UIColor *)color {
+    CGFloat r, g, b, a;
+    [self componentsOfRed:&r green:&g blue:&b alpha:&a fromColor:color];
+    
+    return [NSString stringWithFormat:@"#%02lX%02lX%02lX",
+            lroundf(r * 255),
+            lroundf(g * 255),
+            lroundf(b * 255)
+            ];
 }
 
 #pragma mark - Private Methods

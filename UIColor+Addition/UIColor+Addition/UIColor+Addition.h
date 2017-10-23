@@ -10,10 +10,15 @@
 
 @interface UIColor (Addition)
 
+#pragma mark - Color Modification
 - (UIColor *)colorWithAlpha:(CGFloat)alpha;
-
-// Helper
 + (UIColor *)randomColor;
++ (UIColor *)randomRGBAColor;
 + (NSArray *)transitionColorsFromColor:(UIColor *)fromColor toColor:(UIColor *)toColor onProgress:(CGFloat)progress;
+
+#pragma mark - Color Convertion
+
++ (NSString *)RGBHexStringWithColor:(UIColor *)color;
++ (NSString *)RGBAHexStringWithColor:(UIColor *)color;
 
 @end

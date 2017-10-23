@@ -7,22 +7,17 @@
 		<key>AppTest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2BE9313E1B6B840400780B57</key>
+		<key>2BB702AE1CBE22110044C27B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2BE931501B6B851E00780B57</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2BE931681B6B851E00780B57</key>
+		<key>2BB702CA1CBE22210044C27B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
