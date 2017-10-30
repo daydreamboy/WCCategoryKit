@@ -39,6 +39,7 @@
  */
 - (void)traverseViewHierarchyWithBlock:(void (^)(UIView *subview, BOOL *stop))block stop:(BOOL *)stop {
     NSParameterAssert(block != nil);
+    // not use `if (block)` to protect, because it maybe consumes more time when recursion
     block(self, stop);
     
     if (*stop) {
