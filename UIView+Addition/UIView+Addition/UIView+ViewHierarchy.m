@@ -12,22 +12,44 @@
 
 #pragma mark - Public Methods
 
-static void(^sViewHierarchyEnumerationBlock)(UIView *subview, BOOL *stop);
-static BOOL sFirstOnce;
-static BOOL sStop;
-
 /*!
- *  Enumerate all subviews of the UIView
+ *  Enumerate all subviews of the UIView, excluding the sender view
  *
  *  @param block the callback
  */
 - (void)enumerateSubviewsUsingBlock:(void (^)(UIView *subview, BOOL *stop))block {
-    
-    sFirstOnce = YES; // reset flag for not enumerate the view itself
-    sStop = NO;
+    BOOL stop = NO;
     if (block) {
-        sViewHierarchyEnumerationBlock = block;
-        [self traverseViewHierarchy];
+        // Note: pre-travse subviews for root view, so skip the block for root view
+        for (UIView *subview in self.subviews) {
+            [subview traverseViewHierarchyWithBlock:block stop:&stop];
+            if (stop) {
+                break;
+            }
+        }
+    }
+}
+
+#pragma mark > Internal Methods
+
+/*!
+ *  @sa http://stackoverflow.com/questions/2746478/how-can-i-loop-through-all-subviews-of-a-uiview-and-their-subviews-and-their-su
+ *  @sa http://stackoverflow.com/questions/7243888/how-to-list-out-all-the-subviews-in-a-uiviewcontroller-in-ios
+ *  @sa https://stackoverflow.com/questions/22463017/recursive-method-with-block-and-stop-arguments
+ */
+- (void)traverseViewHierarchyWithBlock:(void (^)(UIView *subview, BOOL *stop))block stop:(BOOL *)stop {
+    NSParameterAssert(block != nil);
+    block(self, stop);
+    
+    if (*stop) {
+        return;
+    }
+    
+    for (UIView *subview in self.subviews) {
+        [subview traverseViewHierarchyWithBlock:block stop:stop];
+        if (*stop) {
+            break;
+        }
     }
 }
 
@@ -78,26 +100,6 @@ static BOOL sStop;
     }
     else {
         return nil;
-    }
-}
-
-#pragma mark - Internal Methods
-
-/*!
- *  @sa http://stackoverflow.com/questions/2746478/how-can-i-loop-through-all-subviews-of-a-uiview-and-their-subviews-and-their-su
- *  @sa http://stackoverflow.com/questions/7243888/how-to-list-out-all-the-subviews-in-a-uiviewcontroller-in-ios
- */
-- (void)traverseViewHierarchy {
-    
-    if (!sStop) {
-        if (sViewHierarchyEnumerationBlock && !sFirstOnce) {
-            sViewHierarchyEnumerationBlock(self, &sStop);
-        }
-        sFirstOnce = NO;
-        
-        for (UIView *subview in self.subviews) {
-            [subview traverseViewHierarchy];
-        }
     }
 }
 

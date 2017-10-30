@@ -49,6 +49,7 @@
     }
     
     __block NSUInteger count = 0;
+    
     AppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
     [appDelegate.window enumerateSubviewsUsingBlock:^(UIView *subview, BOOL *stop) {
         NSLog(@"%@", subview);
