@@ -8,7 +8,6 @@
 
 #import "NSString+Addition.h"
 #import <CommonCrypto/CommonDigest.h>
-#import <UIKit/UIKit.h>
 
 #define DEBUG_LOG 1
 
@@ -276,6 +275,25 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     }
     
     return arrM;
+}
+
+/**
+ Calculte text size for multiple lines
+ 
+ @param width the fixed width which is expected > 0
+ @param attributes the attributes for the string
+ @return the text size
+ */
+- (CGSize)textSizeForMultipleLineWithWidth:(CGFloat)width attributes:(NSDictionary *)attributes {
+    if (width > 0) {
+        return [self boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                  options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                               attributes:attributes
+                                  context:nil].size;
+    }
+    else {
+        return CGSizeZero;
+    }
 }
 
 #pragma mark - Handle String As Specific Strings

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #pragma mark - NSString Functions
 
@@ -36,6 +37,8 @@ FOUNDATION_EXPORT NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirec
 - (NSUInteger)occurrenceOfSubstring:(NSString *)substring;
 /// get substring's ranges of its all occurrence
 - (NSArray *)rangesOfSubstring:(NSString *)substring;
+/// Calculte text size for multiple lines
+- (CGSize)textSizeForMultipleLineWithWidth:(CGFloat)width attributes:(NSDictionary *)attributes;
 
 #pragma mark - Handle String As Specific Strings
 
