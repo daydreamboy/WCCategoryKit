@@ -678,6 +678,15 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     return [stringM copy];
 }
 
+/// @see https://stackoverflow.com/questions/1058736/how-to-create-a-nsstring-from-a-format-string-like-xxx-yyy-and-a-nsarr
++ (NSString *)stringWithFormat:(NSString *)format array:(NSArray *)arguments {
+    if (arguments.count > 10) {
+        @throw [NSException exceptionWithName:NSRangeException reason:@"Maximum of 10 arguments allowed" userInfo:@{@"collection": arguments}];
+    }
+    NSArray *args = [arguments arrayByAddingObjectsFromArray:@[@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X"]];
+    return [NSString stringWithFormat:format, args[0], args[1], args[2], args[3], args[4], args[5], args[6], args[7], args[8], args[9]];
+}
+
 #pragma mark - String Validation
 
 /*!

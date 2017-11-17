@@ -266,7 +266,7 @@
     NSLog(@"%@", [@"abc" MD5]);
 }
 
-#pragma mark - Generate special strings
+#pragma mark - String Generation
 
 - (void)test_randomStringWithLength {
     NSLog(@"random string: %@", [NSString randomStringWithLength:20]);
@@ -305,6 +305,47 @@
     XCTAssertEqualObjects([@"" spacedStringWithFormat:@"123456"], @"");
     XCTAssertEqualObjects([@"" spacedStringWithFormat:@"aa aa"], @"");
     XCTAssertEqualObjects([@"  " spacedStringWithFormat:@"aa aa"], @"");
+}
+
+- (void)test_stringWithFormat_array {
+    NSString *string;
+    NSArray *args;
+    
+    // case 1
+    args = @[
+             @"He",
+             @"llo",
+             @"wo",
+             @"r",
+             @"ld"
+             ];
+
+    string = [NSString stringWithFormat:@"%@%@, %@%@%@!" array:args];
+    NSLog(@"%@", string);
+    XCTAssertEqualObjects(string, @"Hello, world!");
+    
+    // case 2
+    args = @[
+             @(1),
+             @"2",
+             @".",
+             @"1",
+             @(12.1f)
+             ];
+    string = [NSString stringWithFormat:@"%@%@%@%@ = %@" array:args];
+    NSLog(@"%@", string);
+    XCTAssertEqualObjects(string, @"12.1 = 12.1");
+    
+    
+    // case 3
+    args = @[
+             @"a",
+             @"b",
+             @"c"
+             ];
+    string = [NSString stringWithFormat:@"%@%@" array:args];
+    NSLog(@"%@", string);
+    XCTAssertEqualObjects(string, @"ab");
 }
 
 #pragma mark - Check strings

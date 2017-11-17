@@ -87,6 +87,7 @@ FOUNDATION_EXPORT NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirec
 + (NSString *)randomStringWithLength:(NSUInteger)length;
 + (NSString *)randomStringWithCharacters:(NSString *)characters length:(NSUInteger)length;
 - (NSString *)spacedStringWithFormat:(NSString *)formatString;
++ (NSString *)stringWithFormat:(NSString *)format array:(NSArray *)arguments;
 
 #pragma mark - String Validation
 
