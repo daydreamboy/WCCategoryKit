@@ -52,11 +52,11 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     return folderPath;
 }
 
-#pragma mark
+#pragma mark -
 
 @implementation NSString (Addition)
 
-#pragma mark - Substring
+#pragma mark - Substring String
 
 /*!
  *  Subtring at location with length
@@ -109,6 +109,8 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     
     return substring;
 }
+
+#pragma mark - String Modification
 
 /*!
  *  每隔一段距离插入一个分离字符串（separator）
@@ -165,6 +167,8 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     
     return strippedString;
 }
+
+#pragma mark - String Measuration (e.g. length, number of substring, range, ...)
 
 /*!
  *  将1个汉字算成2个字符长度
@@ -239,8 +243,6 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     return collapsedString;
 }
 
-#pragma mark - multiple NSRange of all subtring
-
 /*!
  *  Find ranges of all substrings
  *
@@ -276,7 +278,9 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     return arrM;
 }
 
-#pragma mark - Handle url string
+#pragma mark - Handle String As Specific Strings
+
+#pragma mark > Handle String As Url
 
 /*!
  *  Get the 'value' string for the given 'key' string, e.g. "http://m.cp.360.cn/news/mobile/150410515.html?act=1&reffer=ios&titleRight=share&empty="
@@ -323,6 +327,61 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     
     return [self valueOfUrlForKey:key usingConnector:connector usingSeparator:separator];
 }
+
+- (NSDictionary *)urlKeyValues {
+    NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
+    NSArray *pairs = [self componentsSeparatedByString:@"&"];
+    
+    for (NSString *keyValuePair in pairs) {
+        NSArray *keyValue = [keyValuePair componentsSeparatedByString:@"="];
+        
+        NSString *key = [keyValue firstObject];
+        NSString *value = [keyValue lastObject];
+        
+        if (key && value) {
+            dictM[key] = value;
+        }
+    }
+    
+    return [dictM copy];
+}
+
+#pragma mark > Handle String As Path
+
+/**
+ Get a relative path based on anchorPath
+
+ @param anchorPath the anchor path which is based on
+ @return the relative path, e.g. "b/c", "../b/c"
+ 
+ @see http://stackoverflow.com/questions/6539273/objective-c-code-to-generate-a-relative-path-given-a-file-and-a-directory
+ */
+- (NSString *)stringWithPathRelativeTo:(NSString *)anchorPath {
+    NSArray *pathComponents = [self pathComponents];
+    NSArray *anchorComponents = [anchorPath pathComponents];
+    
+    NSInteger componentsInCommon = MIN([pathComponents count], [anchorComponents count]);
+    for (NSInteger i = 0, n = componentsInCommon; i < n; i++) {
+        if (![[pathComponents objectAtIndex:i] isEqualToString:[anchorComponents objectAtIndex:i]]) {
+            componentsInCommon = i;
+            break;
+        }
+    }
+    
+    NSUInteger numberOfParentComponents = [anchorComponents count] - componentsInCommon;
+    NSUInteger numberOfPathComponents = [pathComponents count] - componentsInCommon;
+    
+    NSMutableArray *relativeComponents = [NSMutableArray arrayWithCapacity:numberOfParentComponents + numberOfPathComponents];
+    for (NSInteger i = 0; i < numberOfParentComponents; i++) {
+        [relativeComponents addObject:@".."];
+    }
+    [relativeComponents addObjectsFromArray:[pathComponents subarrayWithRange:NSMakeRange(componentsInCommon, numberOfPathComponents)]];
+    return [NSString pathWithComponents:relativeComponents];
+}
+
+#pragma mark - String Conversion
+
+#pragma mark > Url Encode/Decode
 
 /**
  *  Get a url-encoding string
@@ -387,26 +446,47 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     return decodedString;
 }
 
-- (NSDictionary *)urlKeyValues {
-    NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
-    NSArray *pairs = [self componentsSeparatedByString:@"&"];
+#pragma mark > Base64 Encode/Decode
+
+/*!
+ *  Encode plain string into base64 string
+ *
+ *  @return one-line base64 string
+ */
+- (NSString *)base64EncodedString {
+    NSString *string;
     
-    for (NSString *keyValuePair in pairs) {
-        NSArray *keyValue = [keyValuePair componentsSeparatedByString:@"="];
-        
-        NSString *key = [keyValue firstObject];
-        NSString *value = [keyValue lastObject];
-        
-        if (key && value) {
-            dictM[key] = value;
-        }
+    if ([self respondsToSelector:@selector(base64EncodedDataWithOptions:)]) {
+        // iOS >= `7.0`
+        // one line base64 string
+        NSData *data = [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedDataWithOptions:0];
+        string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    }
+    else {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+        // one line base64 string
+        string = [[self dataUsingEncoding:NSUTF8StringEncoding] base64Encoding];
+#pragma GCC diagnostic pop
     }
     
-    return [dictM copy];
+    return string;
 }
 
+/*!
+ *  Decode base64 string to plain string
+ *
+ *  @return one-line plain string
+ */
+- (NSString *)base64DecodedString {
+    // iOS >= `7.0`
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    return string;
+}
 
-#pragma mark - Convert JSON string to NSArray/NSDictionary
+#pragma mark > JSON String to id/NSArray/NSDictionary
 
 /*!
  *  Convert the string to NSArray or NSDictionary object using JSON format
@@ -456,7 +536,7 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     }
 }
 
-#pragma mark - Convert NSString to JSON string
+#pragma mark > Escape/Unescape String
 
 /*!
  *  Convert NSString to JSON string by escaping some special characters, e.g. \、"
@@ -480,7 +560,25 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     return [NSString stringWithString:stringM];
 }
 
-#pragma mark - Encryption/Decryption
+/**
+ *  Converting escaped utf8 characters back to their original form
+ *
+ *  @sa http://stackoverflow.com/questions/2099349/using-objective-c-cocoa-to-unescape-unicode-characters-ie-u1234/11615076#11615076
+ *
+ *  @return the unescaped string
+ */
+- (NSString *)unescapedString {
+    // Bug: The escaped string must use \u not \U, CFStringTransform only treats \u
+    NSString *string = [self stringByReplacingOccurrencesOfString:@"\\U" withString:@"\\u"];
+    NSMutableString *unescapedString = [string mutableCopy];
+    
+    CFStringRef transform = CFSTR("Any-Hex/Java");
+    CFStringTransform((__bridge CFMutableStringRef)unescapedString, NULL, transform, YES);
+    
+    return [unescapedString copy];
+}
+
+#pragma mark > Hash
 
 /*!
  *  MD5 encryption
@@ -505,7 +603,7 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
 	}
 }
 
-#pragma mark - Generate special strings
+#pragma mark - String Generation
 
 /*!
  *  Generate a random alphanumeric string from @"a-zA-Z0-9"
@@ -580,7 +678,7 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     return [stringM copy];
 }
 
-#pragma mark - Check strings
+#pragma mark - String Validation
 
 /*!
  *  Check string's characters is ascend or descend with a minimum length
@@ -715,7 +813,7 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     }
 }
 
-#pragma mark - Check strings (Private)
+#pragma mark - String Validation (Private)
 
 /*!
  *  Check string if non-negative integer value
@@ -741,99 +839,6 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     else {
         return NO;
     }
-}
-
-#pragma mark - Escape & Unescaped String
-
-/**
- *  Converting escaped utf8 characters back to their original form
- *
- *  @sa http://stackoverflow.com/questions/2099349/using-objective-c-cocoa-to-unescape-unicode-characters-ie-u1234/11615076#11615076
- *
- *  @return the unescaped string
- */
-- (NSString *)unescapedString {
-    // Bug: The escaped string must use \u not \U, CFStringTransform only treats \u
-    NSString *string = [self stringByReplacingOccurrencesOfString:@"\\U" withString:@"\\u"];
-    NSMutableString *unescapedString = [string mutableCopy];
-    
-    CFStringRef transform = CFSTR("Any-Hex/Java");
-    CFStringTransform((__bridge CFMutableStringRef)unescapedString, NULL, transform, YES);
-    
-    return [unescapedString copy];
-}
-
-#pragma mark - Base64 Encode/Decode
-
-/*!
- *  Encode plain string into base64 string
- *
- *  @return one-line base64 string
- */
-- (NSString *)base64EncodedString {
-    NSString *string;
-    
-    if ([self respondsToSelector:@selector(base64EncodedDataWithOptions:)]) {
-        // iOS >= `7.0`
-        // one line base64 string
-        NSData *data = [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedDataWithOptions:0];
-        string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    }
-    else {
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-        // one line base64 string
-        string = [[self dataUsingEncoding:NSUTF8StringEncoding] base64Encoding];
-#pragma GCC diagnostic pop
-    }
-    
-    return string;
-}
-
-/*!
- *  Decode base64 string to plain string
- *
- *  @return one-line plain string
- */
-- (NSString *)base64DecodedString {
-    // iOS >= `7.0`
-    NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    return string;
-}
-
-#pragma mark - Handle Paths
-
-/**
- Get a relative path based on anchorPath
-
- @param anchorPath the anchor path which is based on
- @return the relative path, e.g. "b/c", "../b/c"
- 
- @see http://stackoverflow.com/questions/6539273/objective-c-code-to-generate-a-relative-path-given-a-file-and-a-directory
- */
-- (NSString*)stringWithPathRelativeTo:(NSString*)anchorPath {
-    NSArray *pathComponents = [self pathComponents];
-    NSArray *anchorComponents = [anchorPath pathComponents];
-    
-    NSInteger componentsInCommon = MIN([pathComponents count], [anchorComponents count]);
-    for (NSInteger i = 0, n = componentsInCommon; i < n; i++) {
-        if (![[pathComponents objectAtIndex:i] isEqualToString:[anchorComponents objectAtIndex:i]]) {
-            componentsInCommon = i;
-            break;
-        }
-    }
-    
-    NSUInteger numberOfParentComponents = [anchorComponents count] - componentsInCommon;
-    NSUInteger numberOfPathComponents = [pathComponents count] - componentsInCommon;
-    
-    NSMutableArray *relativeComponents = [NSMutableArray arrayWithCapacity:numberOfParentComponents + numberOfPathComponents];
-    for (NSInteger i = 0; i < numberOfParentComponents; i++) {
-        [relativeComponents addObject:@".."];
-    }
-    [relativeComponents addObjectsFromArray:[pathComponents subarrayWithRange:NSMakeRange(componentsInCommon, numberOfPathComponents)]];
-    return [NSString pathWithComponents:relativeComponents];
 }
 
 @end

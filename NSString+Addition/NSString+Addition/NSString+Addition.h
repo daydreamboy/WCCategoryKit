@@ -19,53 +19,76 @@ FOUNDATION_EXPORT NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirec
 
 @interface NSString (Addition)
 
-#pragma mark > Substring
+#pragma mark - Substring String
 
 - (NSString *)substringAtLocation:(NSUInteger)location length:(NSUInteger)length;
 - (NSString *)firstSubstringInCharacterSet:(NSCharacterSet *)characterSet;
 
+#pragma mark - String Modification
+
 - (NSString *)insertSeparator:(NSString *)separator atInterval:(NSInteger)interval;
 - (NSString *)stripHTMLTags;
-
 - (NSString *)collapsedStringWithCharacters:(NSString *)characters;
+
+#pragma mark - String Measuration (e.g. length, number of substring, range, ...)
 
 - (NSUInteger)lengthWithChineseCharacter;
 - (NSUInteger)occurrenceOfSubstring:(NSString *)substring;
-
-#pragma mark - Get multiple NSRange of all subtring
-
+/// get substring's ranges of its all occurrence
 - (NSArray *)rangesOfSubstring:(NSString *)substring;
 
-#pragma mark - Handle url string
+#pragma mark - Handle String As Specific Strings
 
+#pragma mark > Handle String As Url
+
+/// get value for key like `key1=value1&key2=value2`
 - (NSString *)valueOfUrlForKey:(NSString *)key;
 - (NSString *)valueOfUrlForKey:(NSString *)key usingConnector:(NSString *)connector usingSeparator:(NSString *)separator;
-- (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding;
-- (NSString *)urlEncodedString;
-- (NSString *)urlDecodedString;
+/// get key/value like `key1=value1&key2=value2`
 - (NSDictionary *)urlKeyValues;
 
-#pragma mark - Convert JSON string to NSArray/NSDictionary
+#pragma mark > Handle String As Path
+
+- (NSString *)stringWithPathRelativeTo:(NSString *)anchorPath;
+
+#pragma mark - String Conversion
+
+#pragma mark > Url Encode/Decode
+
+/// encode with UTF8
+- (NSString *)urlEncodedString;
+/// decode with UTF8
+- (NSString *)urlDecodedString;
+- (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding;
+
+#pragma mark > JSON String to id/NSArray/NSDictionary
 
 - (id)jsonObject NS_AVAILABLE_IOS(5_0);
 - (NSArray *)jsonArray NS_AVAILABLE_IOS(5_0);
 - (NSDictionary *)jsonDict NS_AVAILABLE_IOS(5_0);
 
-#pragma mark - Convert NSString to JSON string
+#pragma mark > Escape/Unescape String
 
 - (NSString *)jsonEscapedString;
+/// unescape unicode string like @"\\U5378\\U8f7d\\U5e94\\U7528" => @"卸载应用"
+- (NSString *)unescapedString;
 
-#pragma mark - Encryption/Decryption
+#pragma mark > Base64 Encode/Decode
+
+- (NSString *)base64EncodedString;
+- (NSString *)base64DecodedString;
+
+#pragma mark > Hash
 
 - (NSString *)MD5;
 
-#pragma mark - Generate special strings
+#pragma mark - String Generation
 
 + (NSString *)randomStringWithLength:(NSUInteger)length;
 + (NSString *)randomStringWithCharacters:(NSString *)characters length:(NSUInteger)length;
 - (NSString *)spacedStringWithFormat:(NSString *)formatString;
 
-#pragma mark - Check strings
+#pragma mark - String Validation
 
 - (BOOL)charactersAscendOrDescendWithLength:(NSInteger)length;
 - (BOOL)uniformedBySingleCharacter;
@@ -77,18 +100,5 @@ FOUNDATION_EXPORT NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirec
 - (BOOL)composedOfLettersUppercase;
 - (BOOL)composedOfChineseCharacters;
 - (BOOL)alphanumeric;
-
-#pragma mark - Escape & Unescaped String
-
-- (NSString *)unescapedString;
-
-#pragma mark - Base64 Encode/Decode
-
-- (NSString *)base64EncodedString;
-- (NSString *)base64DecodedString;
-
-#pragma mark - Handle Paths
-
-- (NSString*)stringWithPathRelativeTo:(NSString*)anchorPath;
 
 @end
