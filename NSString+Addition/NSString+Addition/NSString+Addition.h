@@ -15,14 +15,14 @@ FOUNDATION_EXPORT NSString* SubpathInDocumentFolder(NSString *subpath);
 FOUNDATION_EXPORT NSString* SubpathInLibraryFolder(NSString *subpath);
 FOUNDATION_EXPORT NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder);
 
-#pragma mark
+#pragma mark -
 
 @interface NSString (Addition)
 
-#pragma mark - Substring
+#pragma mark > Substring
 
 - (NSString *)substringAtLocation:(NSUInteger)location length:(NSUInteger)length;
-- (NSString *)substringInCharacterSet:(NSCharacterSet *)characterSet;
+- (NSString *)firstSubstringInCharacterSet:(NSCharacterSet *)characterSet;
 
 - (NSString *)insertSeparator:(NSString *)separator atInterval:(NSInteger)interval;
 - (NSString *)stripHTMLTags;

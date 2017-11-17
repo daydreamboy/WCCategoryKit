@@ -62,17 +62,18 @@
 }
 
 - (void)test_substringInCharacter {
-    // Input
-    NSString *originalString = @"*_?.幸运号This's my string：01234adbc5678";
+    NSString *originalString;
+    NSString *substring;
     
-    NSString *substring1 = [originalString substringInCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
-    NSLog(@"%@", substring1);
+    // case 1
+    originalString = @"*_?.幸运号This's my string：01234adbc5678";
+    substring = [originalString firstSubstringInCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
+    XCTAssertEqualObjects(substring, @"01234");
     
-    // Input
-    NSString *originalString2 = @"*_?.This's my string.";
-    
-    NSString *substring2 = [originalString2 substringInCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]];
-    NSLog(@"%@", substring2);
+    // case 2
+    originalString = @"*_?.This's my string.";
+    substring = [originalString firstSubstringInCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]];
+    XCTAssertNil(substring);
 }
 
 - (void)test_stripHTMLTags {

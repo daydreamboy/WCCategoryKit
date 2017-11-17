@@ -93,10 +93,10 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
  // Input
  NSString *originalString = @"*_?.幸运号This's my string：01234adbc5678";
  
- NSString *numberString = [originalString substringInCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
+ NSString *numberString = [originalString firstSubstringInCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
  NSLog(@"%@", numberString); // 01234
  */
-- (NSString *)substringInCharacterSet:(NSCharacterSet *)characterSet {
+- (NSString *)firstSubstringInCharacterSet:(NSCharacterSet *)characterSet {
     NSString *substring = nil;
     
     NSScanner *scanner = [NSScanner scannerWithString:self];
