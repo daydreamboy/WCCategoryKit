@@ -61,7 +61,7 @@
     XCTAssertNil([nilString substringAtLocation:0 length:1]);
 }
 
-- (void)test_substringInCharacter {
+- (void)test_firstSubstringInCharacterSet {
     NSString *originalString;
     NSString *substring;
     
