@@ -15,12 +15,15 @@ static const char * const UserInfoObjectTag = "UserInfoObjectTag";
 
 @dynamic userInfo;
 
-- (void)setUserInfo:(id)userInfo {
-    objc_setAssociatedObject(self, UserInfoObjectTag, userInfo, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (id)userInfo {
-    return objc_getAssociatedObject(self, UserInfoObjectTag);
+- (NSMutableDictionary *)userInfo {
+    NSMutableDictionary<NSString *, id> *userInfoM = objc_getAssociatedObject(self, UserInfoObjectTag);
+    
+    if (userInfoM == nil) {
+        userInfoM = [NSMutableDictionary dictionary];
+        objc_setAssociatedObject(self, UserInfoObjectTag, userInfoM, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    }
+    
+    return userInfoM;
 }
 
 @end

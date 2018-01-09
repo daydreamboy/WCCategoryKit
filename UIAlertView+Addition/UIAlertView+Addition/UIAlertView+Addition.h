@@ -13,6 +13,6 @@
 /*!
  *  Addition parameter for passing data in UIAlertView's delegate methods
  */
-@property (nonatomic, strong) id userInfo;
+@property (nonatomic, strong, readonly) NSMutableDictionary *userInfo;
 
 @end
