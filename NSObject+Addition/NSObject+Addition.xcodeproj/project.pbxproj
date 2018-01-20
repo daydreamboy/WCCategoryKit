@@ -18,6 +18,8 @@
 		2B7B9CF41CC0F0DC009B284E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B7B9CF31CC0F0DC009B284E /* Assets.xcassets */; };
 		2B7B9CF71CC0F0DC009B284E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B7B9CF51CC0F0DC009B284E /* LaunchScreen.storyboard */; };
 		2B7B9CFC1CC0F0E9009B284E /* NSObject+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B7B9CDF1CC0D72F009B284E /* NSObject+Addition.m */; };
+		4F948A282011D50D0030BC4A /* NSObject+DLIntrospection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F948A272011D50C0030BC4A /* NSObject+DLIntrospection.m */; };
+		4F948A292011D74E0030BC4A /* NSObject+DLIntrospection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F948A272011D50C0030BC4A /* NSObject+DLIntrospection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		2B7B9CF31CC0F0DC009B284E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B7B9CF61CC0F0DC009B284E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B7B9CF81CC0F0DC009B284E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F948A262011D50C0030BC4A /* NSObject+DLIntrospection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DLIntrospection.h"; sourceTree = "<group>"; };
+		4F948A272011D50C0030BC4A /* NSObject+DLIntrospection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DLIntrospection.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,8 @@
 		2B7B9CDD1CC0D70D009B284E /* NSObject+Addition */ = {
 			isa = PBXGroup;
 			children = (
+				4F948A262011D50C0030BC4A /* NSObject+DLIntrospection.h */,
+				4F948A272011D50C0030BC4A /* NSObject+DLIntrospection.m */,
 				2B7B9CDE1CC0D72F009B284E /* NSObject+Addition.h */,
 				2B7B9CDF1CC0D72F009B284E /* NSObject+Addition.m */,
 				2B2BD9B31CC2AC1C00678D72 /* NSObject+VarDump.h */,
@@ -224,6 +230,7 @@
 				2B7B9CD81CC0D6F5009B284E /* Test.m in Sources */,
 				2B7B9CE01CC0D72F009B284E /* NSObject+Addition.m in Sources */,
 				2B2BD9B71CC377E100678D72 /* Test_VarDump.m in Sources */,
+				4F948A282011D50D0030BC4A /* NSObject+DLIntrospection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F948A292011D74E0030BC4A /* NSObject+DLIntrospection.m in Sources */,
 				2B7B9CFC1CC0F0E9009B284E /* NSObject+Addition.m in Sources */,
 				2B7B9CEF1CC0F0DC009B284E /* ViewController.m in Sources */,
 				2B7B9CEC1CC0F0DC009B284E /* AppDelegate.m in Sources */,
@@ -403,6 +411,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -444,6 +453,7 @@
 				INFOPLIST_FILE = AppTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
