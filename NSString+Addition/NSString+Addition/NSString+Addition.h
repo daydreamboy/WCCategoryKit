@@ -11,10 +11,27 @@
 
 #pragma mark - NSString Functions
 
+#pragma mark > String Path
+
 FOUNDATION_EXPORT NSString* SubpathInCacheFolder(NSString *subpath);
 FOUNDATION_EXPORT NSString* SubpathInDocumentFolder(NSString *subpath);
 FOUNDATION_EXPORT NSString* SubpathInLibraryFolder(NSString *subpath);
 FOUNDATION_EXPORT NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder);
+
+#pragma mark > String Path
+
+FOUNDATION_EXPORT NSString* BinaryStringFromInt64(int64_t intValue);
+/**
+ Convert int32 to binary string
+
+ @param intValue the int value of 32 bits
+ @return the NSString with binary style, e.g. @"01010"
+ 
+ @see http://iosdevelopertips.com/objective-c/convert-integer-to-binary-nsstring.html
+ */
+FOUNDATION_EXPORT NSString* BinaryStringFromInt32(int32_t intValue);
+FOUNDATION_EXPORT NSString* BinaryStringFromInt16(int16_t intValue);
+FOUNDATION_EXPORT NSString* BinaryStringFromInt8(int8_t intValue);
 
 #pragma mark -
 

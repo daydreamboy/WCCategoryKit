@@ -17,6 +17,8 @@
 
 #pragma mark - NSString Functions
 
+#pragma mark > String Path
+
 NSString* SubpathInCacheFolder(NSString *subpath)
 {
     return SubpathInFolder(subpath, NSCachesDirectory);
@@ -49,6 +51,61 @@ NSString* SubpathInFolder(NSString *subpath, NSSearchPathDirectory systemFolder)
     NSString *folderPath = [sDict[key] stringByAppendingPathComponent:subpath];
     
     return folderPath;
+}
+
+#pragma mark > String Path
+
+#pragma mark Private Methods
+
+// Note: intValue's type maximum allow int64_t
+NSString* BinaryStringFromIntX(int64_t intValue, int64_t numberOfBits) {
+    int64_t indexOfDigits = numberOfBits;
+    
+    // C array - storage plus one for null
+    char digits[numberOfBits + 1];
+    
+    while (indexOfDigits-- > 0)
+    {
+        // Set digit in array based on rightmost bit
+        digits[indexOfDigits] = (intValue & 1) ? '1' : '0';
+        
+        // Shift incoming value one to right
+        intValue >>= 1;
+    }
+    
+    // Append null
+    digits[numberOfBits] = 0;
+    
+    // Return the binary string
+    return [NSString stringWithUTF8String:digits];
+}
+
+NSString* BinaryStringFromInt64(int64_t intValue) {
+    int sizeOfByte = 8,            // 8 bits per byte
+    numberOfBits = (sizeof(int64_t)) * sizeOfByte; // Total bits
+    
+    return BinaryStringFromIntX(intValue, numberOfBits);
+}
+
+NSString* BinaryStringFromInt32(int32_t intValue) {
+    int sizeOfByte = 8,            // 8 bits per byte
+    numberOfBits = (sizeof(int32_t)) * sizeOfByte; // Total bits
+    
+    return BinaryStringFromIntX(intValue, numberOfBits);
+}
+
+NSString* BinaryStringFromInt16(int16_t intValue) {
+    int sizeOfByte = 8,            // 8 bits per byte
+    numberOfBits = (sizeof(int16_t)) * sizeOfByte; // Total bits
+    
+    return BinaryStringFromIntX(intValue, numberOfBits);
+}
+
+NSString* BinaryStringFromInt8(int8_t intValue) {
+    int sizeOfByte = 8,            // 8 bits per byte
+    numberOfBits = (sizeof(int8_t)) * sizeOfByte; // Total bits
+    
+    return BinaryStringFromIntX(intValue, numberOfBits);
 }
 
 #pragma mark -

@@ -635,6 +635,85 @@
     XCTAssertEqualObjects([@"/a/b/c" stringWithPathRelativeTo:@"/d/e/f"], @"../../../a/b/c", @"");
 }
 
+#pragma mark - NSString Functions
+
+- (void)test_BinaryStringFromInt64 {
+    int64_t intValue = 16;
+    NSLog(@"%lld = %@", intValue, BinaryStringFromInt64(intValue));
+    
+    intValue = -1;
+    NSLog(@"%lld = %@", intValue, BinaryStringFromInt64(intValue));
+    
+    intValue = 2147483647;
+    NSLog(@"%lld = %@", intValue, BinaryStringFromInt64(intValue));
+    
+    intValue = -2147483648;
+    NSLog(@"%lld = %@", intValue, BinaryStringFromInt64(intValue));
+    
+    NSLog(@"%d = %@", INT32_MAX, BinaryStringFromInt64(INT32_MAX));
+    NSLog(@"%d = %@", INT32_MIN, BinaryStringFromInt64(INT32_MIN));
+    
+    intValue = 9223372036854775807LL;
+    NSLog(@"%lld = %@", intValue, BinaryStringFromInt64(intValue));
+    
+    intValue = (-INT64_MAX-1);
+    NSLog(@"%lld = %@", intValue, BinaryStringFromInt64(intValue));
+    
+    NSLog(@"%lld = %@", INT64_MAX, BinaryStringFromInt64(INT64_MAX));
+    NSLog(@"%lld = %@", INT64_MIN, BinaryStringFromInt64(INT64_MIN));
+}
+
+- (void)test_BinaryStringFromInt32 {
+    int intValue = 16;
+    NSLog(@"%d = %@", intValue, BinaryStringFromInt32(intValue));
+    
+    intValue = -1;
+    NSLog(@"%d = %@", intValue, BinaryStringFromInt32(intValue));
+    
+    intValue = 2147483647;
+    NSLog(@"%d = %@", intValue, BinaryStringFromInt32(intValue));
+    
+    intValue = -2147483648;
+    NSLog(@"%d = %@", intValue, BinaryStringFromInt32(intValue));
+    
+    NSLog(@"%d = %@", INT32_MAX, BinaryStringFromInt32(INT32_MAX));
+    NSLog(@"%d = %@", INT32_MIN, BinaryStringFromInt32(INT32_MIN));
+}
+
+- (void)test_BinaryStringFromInt16 {
+    int intValue = 16;
+    NSLog(@"%d = %@", intValue, BinaryStringFromInt16(intValue));
+    
+    intValue = -1;
+    NSLog(@"%d = %@", intValue, BinaryStringFromInt16(intValue));
+    
+    intValue = 32767;
+    NSLog(@"%d = %@", intValue, BinaryStringFromInt16(intValue));
+    
+    intValue = -32768;
+    NSLog(@"%d = %@", intValue, BinaryStringFromInt16(intValue));
+    
+    NSLog(@"%d = %@", INT16_MAX, BinaryStringFromInt16(INT16_MAX));
+    NSLog(@"%d = %@", INT16_MIN, BinaryStringFromInt16(INT16_MIN));
+}
+
+- (void)test_BinaryStringFromInt8 {
+    short shortValue = 16;
+    NSLog(@"%d = %@", shortValue, BinaryStringFromInt8(shortValue));
+    
+    shortValue = -1;
+    NSLog(@"%d = %@", shortValue, BinaryStringFromInt8(shortValue));
+    
+    shortValue = 127;
+    NSLog(@"%d = %@", shortValue, BinaryStringFromInt8(shortValue));
+    
+    shortValue = -128;
+    NSLog(@"%d = %@", shortValue, BinaryStringFromInt8(shortValue));
+    
+    NSLog(@"%d = %@", INT8_MAX, BinaryStringFromInt8(INT8_MAX));
+    NSLog(@"%d = %@", INT8_MIN, BinaryStringFromInt8(INT8_MIN));
+}
+
 @end
 
 
