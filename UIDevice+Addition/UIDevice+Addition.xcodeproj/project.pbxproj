@@ -12,8 +12,8 @@
 		4F433621202B55F400A5B121 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F43361F202B55F400A5B121 /* LaunchScreen.storyboard */; };
 		4F433624202B55F400A5B121 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F433623202B55F400A5B121 /* main.m */; };
 		4F43362B202B565000A5B121 /* UIDevice+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43362A202B565000A5B121 /* UIDevice+Addition.m */; };
-		4F43362F202B56CC00A5B121 /* Demo1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43362D202B56CC00A5B121 /* Demo1ViewController.m */; };
 		4F433632202B56D500A5B121 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F433631202B56D500A5B121 /* RootViewController.m */; };
+		4F433635202BEB5B00A5B121 /* DeviceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F433634202BEB5B00A5B121 /* DeviceInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +26,10 @@
 		4F433623202B55F400A5B121 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4F433629202B565000A5B121 /* UIDevice+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Addition.h"; sourceTree = "<group>"; };
 		4F43362A202B565000A5B121 /* UIDevice+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Addition.m"; sourceTree = "<group>"; };
-		4F43362D202B56CC00A5B121 /* Demo1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Demo1ViewController.m; sourceTree = "<group>"; };
-		4F43362E202B56CC00A5B121 /* Demo1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Demo1ViewController.h; sourceTree = "<group>"; };
 		4F433630202B56D500A5B121 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4F433631202B56D500A5B121 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		4F433633202BEB5B00A5B121 /* DeviceInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceInfoViewController.h; sourceTree = "<group>"; };
+		4F433634202BEB5B00A5B121 /* DeviceInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +88,8 @@
 		4F43362C202B56CC00A5B121 /* AppTestDemos */ = {
 			isa = PBXGroup;
 			children = (
-				4F43362D202B56CC00A5B121 /* Demo1ViewController.m */,
-				4F43362E202B56CC00A5B121 /* Demo1ViewController.h */,
+				4F433633202BEB5B00A5B121 /* DeviceInfoViewController.h */,
+				4F433634202BEB5B00A5B121 /* DeviceInfoViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 			files = (
 				4F433624202B55F400A5B121 /* main.m in Sources */,
 				4F433632202B56D500A5B121 /* RootViewController.m in Sources */,
-				4F43362F202B56CC00A5B121 /* Demo1ViewController.m in Sources */,
+				4F433635202BEB5B00A5B121 /* DeviceInfoViewController.m in Sources */,
 				4F433616202B55F400A5B121 /* AppDelegate.m in Sources */,
 				4F43362B202B565000A5B121 /* UIDevice+Addition.m in Sources */,
 			);
@@ -234,7 +234,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -283,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -295,9 +295,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U7337LU6F2;
 				INFOPLIST_FILE = AppTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -308,9 +309,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U7337LU6F2;
 				INFOPLIST_FILE = AppTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

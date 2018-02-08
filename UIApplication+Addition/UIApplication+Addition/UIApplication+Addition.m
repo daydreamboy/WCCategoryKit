@@ -30,6 +30,9 @@
  *  @sa http://stackoverflow.com/questions/458632/how-can-my-iphone-app-detect-its-own-version-number
  */
 + (NSString *)appVersion {
+    // Note: access from memory, maybe changed by some code
+    // [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+    
     NSString *version = [[self plistInfo] objectForKey:@"CFBundleShortVersionString"];
     return version;
 }
