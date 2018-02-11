@@ -10,12 +10,6 @@
 
 @interface NSArray (Addition)
 
-
-#pragma mark - JSON String
-
-- (NSString *)jsonString NS_AVAILABLE_IOS(5_0);
-- (NSString *)jsonStringWithReadability NS_AVAILABLE_IOS(5_0);
-
 #pragma mark - Sort
 
 //- (NSArray *)sortedArrayUsingComparator:(NSComparator)cmptr ascend:(BOOL)ascend;

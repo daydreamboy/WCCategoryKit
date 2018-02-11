@@ -65,14 +65,6 @@
     NSLog(@"\n");
 }
 
-- (void)testJsonString {
-    NSArray *arr = @[ @"1", @"hello", @"", @(3.14) ];
-    NSLog(@"plain json of array: %@", [arr jsonString]);
-    
-    NSMutableArray *mutableArr = [[NSMutableArray alloc] initWithArray:arr];
-    NSLog(@"readable json of array: \n%@", [mutableArr jsonStringWithReadability]);
-}
-
 - (void)testSort {
     
     Person *p1 = [[Person alloc] initWithName:@"Alice" age:@(21)];

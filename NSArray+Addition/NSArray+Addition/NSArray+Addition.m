@@ -10,26 +10,7 @@
 
 #define DEBUG_LOG 0
 
-@interface NSArray (Internal)
-- (NSString *)jsonStringWithPrintOptions:(NSJSONWritingOptions)options NS_AVAILABLE_IOS(5_0);
-@end
-
 @implementation NSArray (Addition)
-
-/*!
- *  Get a json string of NSArray with plain style
- */
-- (NSString *)jsonString {
-    // Pass 0 if you don't care about the readability of the generated string
-    return [self jsonStringWithPrintOptions:0];
-}
-
-/*!
- *  Get a json string of NSArray with readable style
- */
-- (NSString *)jsonStringWithReadability {
-    return [self jsonStringWithPrintOptions:NSJSONWritingPrettyPrinted];
-}
 
 // http://stackoverflow.com/questions/6179427/objective-c-get-a-class-property-from-string
 // http://stackoverflow.com/questions/7491805/nsarray-remove-objects-with-duplicate-properties
@@ -83,32 +64,3 @@
 
 @end
 
-@implementation NSArray (Internal)
-
-/*!
- *  Get a json string of NSArray
- *
- *  @sa http://stackoverflow.com/questions/6368867/generate-json-string-from-nsdictionary
- *
- *  @param options 0 or NSJSONWritingPrettyPrinted
- */
-- (NSString *)jsonStringWithPrintOptions:(NSJSONWritingOptions)options {
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self
-                                                       options:options
-                                                         error:&error];
-    
-    NSString *jsonString;
-    if (!jsonData) {
-#if DEBUG_LOG
-        NSLog(@"Got an error: %@", error);
-#endif
-    }
-    else {
-        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-    
-    return jsonString;
-}
-
-@end
