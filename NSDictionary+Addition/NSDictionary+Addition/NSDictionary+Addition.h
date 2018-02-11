@@ -10,21 +10,11 @@
 
 @interface NSDictionary (Addition)
 
-#pragma mark - Convert NSDictionary to JSON string
-
-- (NSString *)jsonString NS_AVAILABLE_IOS(5_0);
-- (NSString *)jsonStringWithReadability NS_AVAILABLE_IOS(5_0);
-
 #pragma mark - Safe Value for Key/KeyPath
 
 - (NSArray *)arrayForKey:(NSString *)key;
 - (NSDictionary *)dictForKey:(NSString *)key;
 - (NSString *)stringForKey:(NSString *)key;
-
-#pragma mark - Convert JSON string/data to NSDictionary
-
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString;
-+ (NSDictionary *)dictionaryWithJsonData:(NSData *)jsonData;
 
 #pragma mark - Safe Wrapping
 

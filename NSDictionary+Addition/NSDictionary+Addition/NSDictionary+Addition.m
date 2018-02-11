@@ -10,26 +10,7 @@
 
 #define DEBUG_LOG 0
 
-@interface NSDictionary (Internal)
-- (NSString *)jsonStringWithPrintOptions:(NSJSONWritingOptions)options NS_AVAILABLE_IOS(5_0);
-@end
-
 @implementation NSDictionary (Addition)
-
-/*!
- *  Get a json string of NSDictionary with plain style
- */
-- (NSString *)jsonString {
-    // Pass 0 if you don't care about the readability of the generated string
-    return [self jsonStringWithPrintOptions:0];
-}
-
-/*!
- *  Get a json string of NSDictionary with readable style
- */
-- (NSString *)jsonStringWithReadability {
-    return [self jsonStringWithPrintOptions:NSJSONWritingPrettyPrinted];
-}
 
 /*!
  *  Get a NSArray object in the dictionary for given key
@@ -95,28 +76,6 @@
     }
 
     return [string isKindOfClass:[NSString class]] ? string : nil;
-}
-
-+ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString {
-    return [self dictionaryWithJsonData:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
-}
-
-+ (NSDictionary *)dictionaryWithJsonData:(NSData *)jsonData {
-    if (jsonData.length) {
-        NSError *error;
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
-
-        if (dict && [dict isKindOfClass:[NSDictionary class]]) {
-            return dict;
-        }
-        else {
-#if DEBUG_LOG
-            NSLog(@"Got an error: %@", error);
-#endif
-        }
-    }
-
-    return nil;
 }
 
 #pragma mark - Safe Wrapping
@@ -199,31 +158,3 @@
 
 @end
 
-@implementation NSDictionary (Internal)
-
-/*!
- *  Get a json string of NSDictionary
- *
- *  @sa http://stackoverflow.com/questions/6368867/generate-json-string-from-nsdictionary
- *
- *  @param options 0 or NSJSONWritingPrettyPrinted
- */
-- (NSString *)jsonStringWithPrintOptions:(NSJSONWritingOptions)options {
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self options:options error:&error];
-
-    NSString *jsonString;
-
-    if (!jsonData) {
-#if DEBUG_LOG
-        NSLog(@"Got an error: %@", error);
-#endif
-    }
-    else {
-        jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }
-
-    return jsonString;
-}
-
-@end

@@ -30,20 +30,6 @@
 
 #pragma mark -
 
-- (void)test_JsonString {
-	NSDictionary *dict = @{
-		@"str": @"valueOfStr",
-        @"url": @"http://www.baidu.com/",
-		@"num": @(3.14),
-        //@(1) : @(YES), // Error occurred in jsong parsing
-        @"key": @"中文汉字"
-	};
-	NSLog(@"plain json of dictionary: %@", [dict jsonString]);
-
-	NSMutableDictionary *mutableDict = [[NSMutableDictionary alloc] initWithDictionary:dict];
-	NSLog(@"readable json of dictionary: \n%@", [mutableDict jsonStringWithReadability]);
-}
-
 - (void)test_ArrayForKey {
 	NSDictionary *dict = @{
 		@"array": @[@"1", @"2", @"3"],
@@ -118,10 +104,9 @@
         NSLog(@"%@ - %@", key, dictM[key]);
     }
     
-    NSString *value;
+//    NSString *value;
 //    NSDictionary *dict = @{ @"key": value };
 //    NSLog(@"%@", dict);
-    
 }
 
 - (void)test_dictionaryWithKeyAndValues {
