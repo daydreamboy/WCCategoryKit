@@ -31,5 +31,19 @@
 + (NSString *)deviceDetailedInfo; // @"iPhone xxx"
 + (NSString *)deviceTypeFormatted:(BOOL)formatted;
 
+#pragma mark - Processor Info
+
+// Number of processors
++ (NSInteger)processorNumber;
+// Number of Active Processors
++ (NSInteger)processorActiveNumber;
+
+// Note: not working
+/*
+// Processor Speed in MHz
++ (NSInteger)processorSpeed;
+// Processor Bus Speed in MHz
++ (NSInteger)processorBusSpeed;
+ */
 
 @end

@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 
 #import "DeviceInfoViewController.h"
+#import "ProcessorInfoViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -32,10 +33,12 @@
     // MARK: Configure titles and classes for table view
     _titles = @[
         @"Device Info",
+        @"Processor Info",
         @"call a test method",
     ];
     _classes = @[
         [DeviceInfoViewController class],
+        [ProcessorInfoViewController class],
         @"testMethod",
     ];
 }

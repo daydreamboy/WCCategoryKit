@@ -14,6 +14,7 @@
 		4F43362B202B565000A5B121 /* UIDevice+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F43362A202B565000A5B121 /* UIDevice+Addition.m */; };
 		4F433632202B56D500A5B121 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F433631202B56D500A5B121 /* RootViewController.m */; };
 		4F433635202BEB5B00A5B121 /* DeviceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F433634202BEB5B00A5B121 /* DeviceInfoViewController.m */; };
+		4F70BC47203049610017C99B /* ProcessorInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F70BC45203049600017C99B /* ProcessorInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		4F433631202B56D500A5B121 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4F433633202BEB5B00A5B121 /* DeviceInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceInfoViewController.h; sourceTree = "<group>"; };
 		4F433634202BEB5B00A5B121 /* DeviceInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceInfoViewController.m; sourceTree = "<group>"; };
+		4F70BC45203049600017C99B /* ProcessorInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcessorInfoViewController.m; sourceTree = "<group>"; };
+		4F70BC46203049610017C99B /* ProcessorInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcessorInfoViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 			children = (
 				4F433633202BEB5B00A5B121 /* DeviceInfoViewController.h */,
 				4F433634202BEB5B00A5B121 /* DeviceInfoViewController.m */,
+				4F70BC46203049610017C99B /* ProcessorInfoViewController.h */,
+				4F70BC45203049600017C99B /* ProcessorInfoViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F433624202B55F400A5B121 /* main.m in Sources */,
+				4F70BC47203049610017C99B /* ProcessorInfoViewController.m in Sources */,
 				4F433632202B56D500A5B121 /* RootViewController.m in Sources */,
 				4F433635202BEB5B00A5B121 /* DeviceInfoViewController.m in Sources */,
 				4F433616202B55F400A5B121 /* AppDelegate.m in Sources */,
