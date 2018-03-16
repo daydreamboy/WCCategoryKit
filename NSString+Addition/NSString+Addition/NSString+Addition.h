@@ -90,8 +90,21 @@ FOUNDATION_EXPORT NSString* BinaryStringFromInt8(int8_t intValue);
 #pragma mark > Escape/Unescape String
 
 - (NSString *)jsonEscapedString;
-/// unescape unicode string like @"\\U5378\\U8f7d\\U5e94\\U7528" => @"卸载应用"
-- (NSString *)unescapedString;
+/**
+ *  Converting escaped utf8 characters back to their original form, e.g. @"\\U5378\\U8f7d\\U5e94\\U7528" => @"卸载应用"
+ *
+ *  @sa http://stackoverflow.com/questions/2099349/using-objective-c-cocoa-to-unescape-unicode-characters-ie-u1234/11615076#11615076
+ *
+ *  @return the unescaped string
+ */
+- (NSString *)unescapedUnicodeString;
+/**
+ Companion with unescapedUnicodeString, escape raw unicode string, e.g. ESCAPE_UNICODE_CSTR("\U5e97\U94fa\U6d4b\U8bd5\U8d26\U53f7") => @"\"\\U5e97\\U94fa\\U6d4b\\U8bd5\\U8d26\\U53f7\""
+
+ @param ... the c string
+ @return the NSString
+ */
+#define ESCAPE_UNICODE_CSTR(...) @#__VA_ARGS__
 
 #pragma mark > Base64 Encode/Decode
 

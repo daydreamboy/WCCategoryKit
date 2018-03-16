@@ -576,15 +576,20 @@
 
 - (void)test_unescapedString {
     // Case 1: Need to unescape
-    XCTAssertEqualObjects([@"\\u5404\\u500b\\u90fd" unescapedString], @"各個都");
-    XCTAssertEqualObjects([@"\\U5378\\U8f7d\\U5e94\\U7528" unescapedString], @"卸载应用");
-    XCTAssertEqualObjects([@"\u03C0" unescapedString], @"π");
+    XCTAssertEqualObjects([@"\\u5404\\u500b\\u90fd" unescapedUnicodeString], @"各個都");
+    XCTAssertEqualObjects([@"\\U5378\\U8f7d\\U5e94\\U7528" unescapedUnicodeString], @"卸载应用");
+    
+    XCTAssertEqualObjects([@"\u03C0" unescapedUnicodeString], @"π");
+    // Note: Xcode not allow c string to use "\U03C0", must be "\u03C0", so use ESCAPE_UNICODE_CSTR macro to escape it
+    XCTAssertEqualObjects([ESCAPE_UNICODE_CSTR("\U03C0") unescapedUnicodeString], @"π");
+    
+    XCTAssertEqualObjects([ESCAPE_UNICODE_CSTR("\U5e97\U94fa\U6d4b\U8bd5\U8d26\U53f7") unescapedUnicodeString], @"店铺测试账号");
     
     // Case 2: No need to unescape
-    XCTAssertEqualObjects([@"" unescapedString], @"");
-    XCTAssertEqualObjects([@"a normal string" unescapedString], @"a normal string");
+    XCTAssertEqualObjects([@"" unescapedUnicodeString], @"");
+    XCTAssertEqualObjects([@"a normal string" unescapedUnicodeString], @"a normal string");
     NSString *nilString;
-    XCTAssertNil([nilString unescapedString]);
+    XCTAssertNil([nilString unescapedUnicodeString]);
 }
 
 - (void)test_ulrstring {

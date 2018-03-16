@@ -643,16 +643,11 @@ NSString* BinaryStringFromInt8(int8_t intValue) {
     return [NSString stringWithString:stringM];
 }
 
-/**
- *  Converting escaped utf8 characters back to their original form
- *
- *  @sa http://stackoverflow.com/questions/2099349/using-objective-c-cocoa-to-unescape-unicode-characters-ie-u1234/11615076#11615076
- *
- *  @return the unescaped string
- */
-- (NSString *)unescapedString {
+- (NSString *)unescapedUnicodeString {
     // Bug: The escaped string must use \u not \U, CFStringTransform only treats \u
     NSString *string = [self stringByReplacingOccurrencesOfString:@"\\U" withString:@"\\u"];
+    // Note: remove left or right redundant `"` if needed
+    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\""]];
     NSMutableString *unescapedString = [string mutableCopy];
     
     CFStringRef transform = CFSTR("Any-Hex/Java");
