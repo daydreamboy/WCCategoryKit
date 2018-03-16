@@ -570,15 +570,23 @@ NSString* BinaryStringFromInt8(int8_t intValue) {
  */
 - (id)jsonObject {
     NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *error;
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-#if DEBUG_LOG
-    if (!jsonObject) {
-        NSLog(@"Error parsing JSON: %@", error);
+    if (!jsonData) {
+        return nil;
     }
-#endif
     
-    return jsonObject;
+    @try {
+        NSError *error;
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
+        if (!jsonObject) {
+            NSLog(@"[%@] error parsing JSON: %@", NSStringFromClass([self class]), error);
+        }
+        return jsonObject;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"[%@] an exception occured:\n%@", NSStringFromClass([self class]), exception);
+    }
+    
+    return nil;
 }
 
 /*!

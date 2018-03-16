@@ -120,11 +120,23 @@
 #pragma mark - Handle url string
 
 - (void)test_valueOfUrlForKey {
-    NSString *url = @"http://m.cp.360.cn/news/mobile/150410515.html?act=1&reffer=ios&titleRight=share&empty=";
+    NSString *url;
+    
+    // case 1
+    url = @"http://m.cp.360.cn/news/mobile/150410515.html?act=1&reffer=ios&titleRight=share&empty=";
     NSLog(@"titleRight=%@", [url valueOfUrlForKey:@"titleRight"]);
     NSLog(@"act=%@", [url valueOfUrlForKey:@"act"]);
     NSLog(@"reffer=%@", [url valueOfUrlForKey:@"reffer"]);
     NSLog(@"empty=%@", [url valueOfUrlForKey:@"empty"]);
+    
+    // case 2
+    url = @"wangxs://multiaction/and?multi=%5B%22wangx%3A%2F%2Fh5%2Fopen%3Furl%3Dhttp%253a%252f%252fwww.taobao.com%22%2C%22wangx%3A%2F%2Fmenu%2Fdismiss%3Fmenuname%3DMenuNameForShowType%26container%3DpopBubble%26strategy%3Dtransient%26bubbleBizType%3Dtest%26conversationId%3Dcnhhupanww%E5%BA%97%E9%93%BA%E6%B5%8B%E8%AF%95%E8%B4%A6%E5%8F%B7003%22%5D";
+    
+    NSLog(@"multi=%@", [url valueOfUrlForKey:@"multi"]);
+    NSLog(@"multi (decoded)=%@", [[url valueOfUrlForKey:@"multi"] urlDecodedString]);
+    NSLog(@"multi (decoded as array)=%@", [[[url valueOfUrlForKey:@"multi"] urlDecodedString] jsonArray]);
+    NSArray *arr = [[[url valueOfUrlForKey:@"multi"] urlDecodedString] jsonArray];
+    NSLog(@"%@", arr);
 }
 
 - (void)test_valueOfUrlForKey_usingConnector_usingSeparator {
