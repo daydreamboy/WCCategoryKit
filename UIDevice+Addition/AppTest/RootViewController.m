@@ -10,10 +10,14 @@
 
 #import "DeviceInfoViewController.h"
 #import "ProcessorInfoViewController.h"
+#import "MemoryInfoViewController.h"
+#import "WCDeviceTool.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) NSArray *classes;
+@property (nonatomic, strong) UILabel *labelStatus;
+@property (nonatomic, strong) NSTimer *timer;
 @end
 
 @implementation RootViewController
@@ -34,13 +38,36 @@
     _titles = @[
         @"Device Info",
         @"Processor Info",
-        @"call a test method",
+        @"Memory Info",
+        @"malloc 10MB manually",
     ];
     _classes = @[
         [DeviceInfoViewController class],
         [ProcessorInfoViewController class],
-        @"testMethod",
+        [MemoryInfoViewController class],
+        @"malloc10MB",
     ];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+//    [[UIApplication sharedApplication].keyWindow addSubview:self.labelStatus];
+    
+//    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(queryMemory:) userInfo:nil repeats:YES];
+}
+
+- (void)dealloc {
+    [_timer invalidate];
+    _timer = nil;
+}
+
+#pragma mark -
+
+- (void)queryMemory:(NSTimer *)timer {
+    double footprint = [WCDeviceTool processMemoryFootprint];
+    double president = [WCDeviceTool processMemoryResident];
+    self.labelStatus.text = [NSString stringWithFormat:@"footprint: %f, president: %f", footprint, president];
 }
 
 #pragma mark -
@@ -63,6 +90,9 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
+    if ([_classes[indexPath.row] isKindOfClass:[NSString class]]) {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     cell.textLabel.text = _titles[indexPath.row];
 
     return cell;
@@ -94,8 +124,36 @@
 
 #pragma mark - Test Methods
 
-- (void)testMethod {
-    NSLog(@"test something");
+- (void)malloc10MB {
+    NSLog(@"malloc 10MB memory");
+    
+    static BOOL isAlloc = NO;
+    static int *bytes = NULL;
+    if (!isAlloc) {
+//        isAlloc = YES;
+        bytes = (int *)malloc(10 * 1024 * 1024);
+        int size = 10 * 1024 * 1024 / 4;
+        for (int i = 0 ; i < size; i++) {
+            bytes[i] = 3;
+        }
+    }
+}
+
+#pragma mark - Getters
+
+- (UILabel *)labelStatus {
+    if (!_labelStatus) {
+        CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+        
+        UILabel *label = [[UILabel alloc] init];
+        label.frame = CGRectMake(0, 20, screenSize.width, 30);
+        label.font = [UIFont systemFontOfSize:18];
+        label.textColor = [UIColor blueColor];
+        
+        _labelStatus = label;
+    }
+    
+    return _labelStatus;
 }
 
 @end
