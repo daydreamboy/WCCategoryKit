@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 
 #import "AppTest_Addition.h"
+#import "CreateOnePixelHeightImageViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -32,9 +33,11 @@
     // MARK: Configure titles and classes for table view
     _titles = @[
         @"Test UIImage",
+        @"Create 1 px height image",
     ];
     _classes = @[
         [AppTest_Addition class],
+        [CreateOnePixelHeightImageViewController class],
     ];
 }
 

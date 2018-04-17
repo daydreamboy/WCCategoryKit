@@ -20,7 +20,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.view addSubview:self.imageViewCaptcha];
+//    [self.view addSubview:self.imageViewCaptcha];
+    UIImage *image = [UIImage imageWithColor:[UIColor redColor]];
+    NSLog(@"%@", image);
 }
 
 - (UIImageView *)imageViewCaptcha {

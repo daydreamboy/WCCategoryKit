@@ -25,6 +25,7 @@
 		2B65D4031CC63F7100E8AE00 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B65D3FA1CC63F7100E8AE00 /* 9.png */; };
 		2BE931241B6B5D2700780B57 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE931231B6B5D2700780B57 /* Test.m */; };
 		2BE9312B1B6B5D5C00780B57 /* UIImage+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE9312A1B6B5D5C00780B57 /* UIImage+Addition.m */; };
+		4F73A0382084A84900018D38 /* CreateOnePixelHeightImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F73A0372084A84900018D38 /* CreateOnePixelHeightImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		2BE931231B6B5D2700780B57 /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		2BE931291B6B5D5C00780B57 /* UIImage+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Addition.h"; sourceTree = "<group>"; };
 		2BE9312A1B6B5D5C00780B57 /* UIImage+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Addition.m"; sourceTree = "<group>"; };
+		4F73A0362084A84900018D38 /* CreateOnePixelHeightImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateOnePixelHeightImageViewController.h; sourceTree = "<group>"; };
+		4F73A0372084A84900018D38 /* CreateOnePixelHeightImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateOnePixelHeightImageViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +106,8 @@
 			children = (
 				2B65D3DA1CC61FC900E8AE00 /* AppTest_Addition.h */,
 				2B65D3DB1CC61FC900E8AE00 /* AppTest_Addition.m */,
+				4F73A0362084A84900018D38 /* CreateOnePixelHeightImageViewController.h */,
+				4F73A0372084A84900018D38 /* CreateOnePixelHeightImageViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				2B65D3C31CC61F1900E8AE00 /* AppDelegate.m in Sources */,
 				2B65D3D51CC61F5A00E8AE00 /* RootViewController.m in Sources */,
 				2B65D3C01CC61F1900E8AE00 /* main.m in Sources */,
+				4F73A0382084A84900018D38 /* CreateOnePixelHeightImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +516,7 @@
 				2B65D3D11CC61F1900E8AE00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2BE931171B6B5D1900780B57 /* Build configuration list for PBXProject "UIImage+Addition" */ = {
 			isa = XCConfigurationList;

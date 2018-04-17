@@ -12,6 +12,13 @@
 
 #pragma mark - Gernerate Image
 
+/*!
+ *  Get an image with pure color
+ *
+ *  @param color the UIColor
+ *
+ *  @return a UIImage with {1px, 1px} colored by UIColor
+ */
 + (UIImage *)imageWithColor:(UIColor *)color;
 - (UIImage *)imageWithTemplateColor:(UIColor *)templateColor;
 

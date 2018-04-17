@@ -10,16 +10,12 @@
 
 @implementation UIImage (Addition)
 
-/*!
- *  Get an image with pure color
- *
- *  @param color the UIColor
- *
- *  @return a UIImage colored by UIColor
- */
 + (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0, 0, 1, 1);
-    UIGraphicsBeginImageContext(rect.size);
+    // Note: create 1px X 1px size of rect
+    CGRect rect = CGRectMake(0, 0, 1.0 / [UIScreen mainScreen].scale, 1.0 / [UIScreen mainScreen].scale);
+    // Note: use UIGraphicsBeginImageContextWithOptions instead of UIGraphicsBeginImageContext to set UIImage.scale
+    // @see https://stackoverflow.com/questions/4965036/uigraphicsgetimagefromcurrentimagecontext-retina-resolution
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     CGContextSetFillColorWithColor(context, [color CGColor]);
@@ -30,7 +26,6 @@
     
     return newImage;
 }
-
 
 /**
  Get an image with template color
