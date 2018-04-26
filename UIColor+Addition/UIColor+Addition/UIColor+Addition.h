@@ -21,4 +21,8 @@
 + (NSString *)RGBHexStringWithColor:(UIColor *)color;
 + (NSString *)RGBAHexStringWithColor:(UIColor *)color;
 
+#pragma mark - Color Checks
+
++ (BOOL)isClearWithColor:(UIColor *)color;
+
 @end

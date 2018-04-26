@@ -94,6 +94,19 @@
             ];
 }
 
+#pragma mark - Color Checks
+
+// @see https://stackoverflow.com/a/31565930
++ (BOOL)isClearWithColor:(UIColor *)color {
+    CGFloat alpha = CGColorGetAlpha(color.CGColor);
+    if (alpha == (CGFloat)0.0) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
 #pragma mark - Private Methods
 
 + (void)componentsOfRed:(CGFloat *)red green:(CGFloat *)green blue:(CGFloat *)blue alpha:(CGFloat *)alpha fromColor:(UIColor *)color {
