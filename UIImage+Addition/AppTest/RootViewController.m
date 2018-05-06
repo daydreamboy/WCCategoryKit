@@ -8,8 +8,10 @@
 
 #import "RootViewController.h"
 
-#import "AppTest_Addition.h"
-#import "CreateOnePixelHeightImageViewController.h"
+#import "CreateOnePixelHeightLineViewController.h"
+#import "ReplaceColorByPixelViewController.h"
+#import "CreateImageWithAlphaViewController.h"
+#import "ScaleImageWithNewSizeViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -32,12 +34,16 @@
 
     // MARK: Configure titles and classes for table view
     _titles = @[
-        @"Test UIImage",
-        @"Create 1 px height image",
+        @"Create 1 px height line",
+        @"Replace pixel colors (unfinished)",
+        @"Create an alpha version of UIImage",
+        @"Scale image with new size",
     ];
     _classes = @[
-        [AppTest_Addition class],
-        [CreateOnePixelHeightImageViewController class],
+        [CreateOnePixelHeightLineViewController class],
+        [ReplaceColorByPixelViewController class],
+        [CreateImageWithAlphaViewController class],
+        [ScaleImageWithNewSizeViewController class],
     ];
 }
 

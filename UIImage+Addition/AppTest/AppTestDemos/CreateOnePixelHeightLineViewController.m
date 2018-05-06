@@ -1,12 +1,12 @@
 //
-//  CreateOnePixelHeightImageViewController.m
+//  CreateOnePixelHeightLineViewController.m
 //  AppTest
 //
 //  Created by wesley_chen on 2018/4/16.
 //
 
-#import "CreateOnePixelHeightImageViewController.h"
-#import "UIImage+Addition.h"
+#import "CreateOnePixelHeightLineViewController.h"
+#import "WCImageTool.h"
 
 @implementation UIImage (Wrong)
 
@@ -26,12 +26,12 @@
 
 @end
 
-@interface CreateOnePixelHeightImageViewController ()
+@interface CreateOnePixelHeightLineViewController ()
 @property (nonatomic, strong) UIImageView *imageView1;
 @property (nonatomic, strong) UIImageView *imageView2;
 @end
 
-@implementation CreateOnePixelHeightImageViewController
+@implementation CreateOnePixelHeightLineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,7 +48,7 @@
     if (!_imageView1) {
         CGSize screenSize = [[UIScreen mainScreen] bounds].size;
         
-        UIImage *image = [UIImage imageWithColor:[UIColor redColor]];
+        UIImage *image = [WCImageTool imageWithColor:[UIColor redColor]];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 100, screenSize.width, image.size.height)];
         imageView.image = image;
         _imageView1 = imageView;
