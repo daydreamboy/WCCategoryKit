@@ -7,7 +7,7 @@
 //
 
 #import "AddShadowBorderToImageViewController.h"
-#import "UIImageView+Addition.h"
+#import "WCImageViewTool.h"
 
 @interface AddShadowBorderToImageViewController ()
 @property (nonatomic, strong) UIImageView *imageViewLeft;
@@ -34,7 +34,7 @@
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 64 + 10, imageSize.width, imageSize.height)];
         imageView.image = image;
-        [imageView addShadowBorderWithBorderColor:[UIColor orangeColor] borderWidth:1];
+        [WCImageViewTool setImageView:imageView shadowBorderColor:[UIColor orangeColor] shadowBorderWidth:5];
         
         _imageViewLeft = imageView;
     }
@@ -49,7 +49,7 @@
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(self.imageViewLeft.frame) + 20, imageSize.width, imageSize.height)];
         imageView.image = image;
-        [imageView addShadowBorderWithBorderColor:[UIColor redColor] borderWidth:1];
+        [WCImageViewTool setImageView:imageView shadowBorderColor:[UIColor redColor] shadowBorderWidth:1];
         
         _imageViewRight = imageView;
     }

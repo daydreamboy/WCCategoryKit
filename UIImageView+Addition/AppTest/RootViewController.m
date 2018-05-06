@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 
 #import "AddShadowBorderToImageViewController.h"
+#import "MaskImageViewViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -32,10 +33,12 @@
     // MARK: Configure titles and classes for table view
     _titles = @[
         @"Add shadow border to image",
+        @"Mask a image by antoher image",
         @"call a test method",
     ];
     _classes = @[
         [AddShadowBorderToImageViewController class],
+        [MaskImageViewViewController class],
         @"testMethod",
     ];
 }

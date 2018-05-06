@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F5F6B84209C07AA00A35A12 /* WCImageViewTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5F6B83209C07AA00A35A12 /* WCImageViewTool.m */; };
+		4F5F6B87209C362300A35A12 /* MaskImageViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5F6B86209C362300A35A12 /* MaskImageViewViewController.m */; };
+		4F5F6B8B209C39B200A35A12 /* coupon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F5F6B88209C39B200A35A12 /* coupon.png */; };
+		4F5F6B8C209C39B200A35A12 /* mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F5F6B89209C39B200A35A12 /* mask@2x.png */; };
+		4F5F6B8D209C39B200A35A12 /* mask@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F5F6B8A209C39B200A35A12 /* mask@3x.png */; };
 		4F86CF6F206CBAA10080A9E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F86CF6E206CBAA10080A9E1 /* AppDelegate.m */; };
 		4F86CF77206CBAA10080A9E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F86CF76206CBAA10080A9E1 /* Assets.xcassets */; };
 		4F86CF7A206CBAA10080A9E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F86CF78206CBAA10080A9E1 /* LaunchScreen.storyboard */; };
 		4F86CF7D206CBAA10080A9E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F86CF7C206CBAA10080A9E1 /* main.m */; };
-		4F86CF84206CBAE30080A9E1 /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F86CF83206CBAE30080A9E1 /* UIImageView+Addition.m */; };
 		4F86CF8B206CBB1B0080A9E1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F86CF89206CBB1A0080A9E1 /* RootViewController.m */; };
 		4F86CF8E206CBB630080A9E1 /* AddShadowBorderToImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F86CF8C206CBB630080A9E1 /* AddShadowBorderToImageViewController.m */; };
 		4F86CF94206CBBC20080A9E1 /* aliwx_card_bubble_right_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F86CF90206CBBC20080A9E1 /* aliwx_card_bubble_right_bg@2x.png */; };
@@ -21,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F5F6B82209C07AA00A35A12 /* WCImageViewTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCImageViewTool.h; sourceTree = "<group>"; };
+		4F5F6B83209C07AA00A35A12 /* WCImageViewTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCImageViewTool.m; sourceTree = "<group>"; };
+		4F5F6B85209C362300A35A12 /* MaskImageViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaskImageViewViewController.h; sourceTree = "<group>"; };
+		4F5F6B86209C362300A35A12 /* MaskImageViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MaskImageViewViewController.m; sourceTree = "<group>"; };
+		4F5F6B88209C39B200A35A12 /* coupon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coupon.png; sourceTree = "<group>"; };
+		4F5F6B89209C39B200A35A12 /* mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mask@2x.png"; sourceTree = "<group>"; };
+		4F5F6B8A209C39B200A35A12 /* mask@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mask@3x.png"; sourceTree = "<group>"; };
 		4F86CF6A206CBAA10080A9E1 /* AppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F86CF6D206CBAA10080A9E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4F86CF6E206CBAA10080A9E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -28,8 +39,6 @@
 		4F86CF79206CBAA10080A9E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F86CF7B206CBAA10080A9E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F86CF7C206CBAA10080A9E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4F86CF82206CBAE30080A9E1 /* UIImageView+Addition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Addition.h"; sourceTree = "<group>"; };
-		4F86CF83206CBAE30080A9E1 /* UIImageView+Addition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Addition.m"; sourceTree = "<group>"; };
 		4F86CF89206CBB1A0080A9E1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		4F86CF8A206CBB1B0080A9E1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		4F86CF8C206CBB630080A9E1 /* AddShadowBorderToImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddShadowBorderToImageViewController.m; sourceTree = "<group>"; };
@@ -88,8 +97,8 @@
 		4F86CF81206CBAC20080A9E1 /* UIImageView+Addition */ = {
 			isa = PBXGroup;
 			children = (
-				4F86CF82206CBAE30080A9E1 /* UIImageView+Addition.h */,
-				4F86CF83206CBAE30080A9E1 /* UIImageView+Addition.m */,
+				4F5F6B82209C07AA00A35A12 /* WCImageViewTool.h */,
+				4F5F6B83209C07AA00A35A12 /* WCImageViewTool.m */,
 			);
 			path = "UIImageView+Addition";
 			sourceTree = "<group>";
@@ -99,6 +108,8 @@
 			children = (
 				4F86CF8D206CBB630080A9E1 /* AddShadowBorderToImageViewController.h */,
 				4F86CF8C206CBB630080A9E1 /* AddShadowBorderToImageViewController.m */,
+				4F5F6B85209C362300A35A12 /* MaskImageViewViewController.h */,
+				4F5F6B86209C362300A35A12 /* MaskImageViewViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -106,6 +117,9 @@
 		4F86CF8F206CBBC20080A9E1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4F5F6B88209C39B200A35A12 /* coupon.png */,
+				4F5F6B89209C39B200A35A12 /* mask@2x.png */,
+				4F5F6B8A209C39B200A35A12 /* mask@3x.png */,
 				4F86CF90206CBBC20080A9E1 /* aliwx_card_bubble_right_bg@2x.png */,
 				4F86CF91206CBBC20080A9E1 /* aliwx_card_bubble_right_bg@3x.png */,
 				4F86CF92206CBBC20080A9E1 /* aliwx_card_bubble_left_bg@3x.png */,
@@ -174,9 +188,12 @@
 				4F86CF96206CBBC20080A9E1 /* aliwx_card_bubble_left_bg@3x.png in Resources */,
 				4F86CF94206CBBC20080A9E1 /* aliwx_card_bubble_right_bg@2x.png in Resources */,
 				4F86CF7A206CBAA10080A9E1 /* LaunchScreen.storyboard in Resources */,
+				4F5F6B8D209C39B200A35A12 /* mask@3x.png in Resources */,
 				4F86CF77206CBAA10080A9E1 /* Assets.xcassets in Resources */,
+				4F5F6B8C209C39B200A35A12 /* mask@2x.png in Resources */,
 				4F86CF97206CBBC20080A9E1 /* aliwx_card_bubble_left_bg@2x.png in Resources */,
 				4F86CF95206CBBC20080A9E1 /* aliwx_card_bubble_right_bg@3x.png in Resources */,
+				4F5F6B8B209C39B200A35A12 /* coupon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +204,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F86CF84206CBAE30080A9E1 /* UIImageView+Addition.m in Sources */,
+				4F5F6B87209C362300A35A12 /* MaskImageViewViewController.m in Sources */,
+				4F5F6B84209C07AA00A35A12 /* WCImageViewTool.m in Sources */,
 				4F86CF8B206CBB1B0080A9E1 /* RootViewController.m in Sources */,
 				4F86CF8E206CBB630080A9E1 /* AddShadowBorderToImageViewController.m in Sources */,
 				4F86CF7D206CBAA10080A9E1 /* main.m in Sources */,
