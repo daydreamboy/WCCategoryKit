@@ -574,7 +574,43 @@
 
 #pragma mark - Escape & Unescaped String
 
+- (NSArray<NSString *> *)_parseEventsArrayFromEvent:(NSString *)aEvent
+{
+    NSArray *events = nil;
+    
+    if ([aEvent rangeOfString:@"{"].location != NSNotFound || [aEvent rangeOfString:@"["].location != NSNotFound) {
+        NSData *jsonData = [aEvent dataUsingEncoding:NSUTF8StringEncoding];
+        id jsonObject = nil;
+        @try {
+            jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:NULL];
+        } @catch (NSException *exception) {
+            jsonObject = nil;
+        }
+        
+        if ([jsonObject isKindOfClass:[NSArray class]]) {
+            events = jsonObject;
+        } else if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+            events = jsonObject[@"action"];
+            if (![events isKindOfClass:[NSArray class]]) { events = nil; }
+        }
+    } else if (aEvent != nil) {
+        events = @[aEvent];
+    }
+    
+    return events;
+}
+
 - (void)test_unescapedString {
+    NSString *event = @"wangx://recommendItems/show?data={\"api\":\"mtop.cb.menu.event\",\"needSession\":true,\"needencode\":true,\"params\":{\"handlerBonding\":{\"handlerContent\":{\"sellerId\":2257290474,\"instanceId\":8020,\"activityTag\":0,\"rettype\":\"tao\"}, \"handlerKey\":\"cbinteraction-itemRecommend\"}}}";
+    
+    event = @"wangx://recommendItems/show?data=%7B%22api%22%3A%22mtop.cb.menu.event%22%2C%22needSession%22%3Atrue%2C%22needencode%22%3Atrue%2C%22params%22%3A%7B%22handlerBonding%22%3A%7B%22handlerContent%22%3A%7B%22sellerId%22%3A2257290474%2C%22instanceId%22%3A8020%2C%22activityTag%22%3A0%2C%22rettype%22%3A%22tao%22%7D%2C%20%22handlerKey%22%3A%22cbinteraction-itemRecommend%22%7D%7D%7D";
+    event = @"wangx://p2sconversation/package?toId=cntaobaoww店铺测试账号003&serviceType=cloud_auto_reply&bizType=3&cardCode=cb_shop_recommend&title=猜你喜欢&fromId=cntaobaowc测试账号1000&intent=doNormalCardAction&bot_action=CbSmartMenuAction";
+    
+    BOOL success = [self _parseEventsArrayFromEvent:event];
+    NSLog(@"%@", success ? @"YES" : @"NO");
+    
+    return;
+    
     // Case 1: Need to unescape
     XCTAssertEqualObjects([@"\\u5404\\u500b\\u90fd" unescapedUnicodeString], @"各個都");
     XCTAssertEqualObjects([@"\\U5378\\U8f7d\\U5e94\\U7528" unescapedUnicodeString], @"卸载应用");

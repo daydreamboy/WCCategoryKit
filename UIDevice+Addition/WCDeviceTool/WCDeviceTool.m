@@ -10,6 +10,7 @@
 
 #import <sys/sysctl.h>
 #import <mach/mach.h>
+#import <objc/runtime.h>
 
 @implementation WCDeviceTool
 @end
@@ -70,3 +71,23 @@
 }
 @end
 
+#pragma mark - System
+
+@implementation WCDeviceTool (System)
++ (NSArray<NSString *> *)allInstalledApps {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warc-performSelector-leaks"
+    Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+    NSObject *workspace = [LSApplicationWorkspace_class performSelector:NSSelectorFromString(@"defaultWorkspace")];
+    NSArray<NSObject *> *LSApplicationProxy_objects = [workspace performSelector:NSSelectorFromString(@"allApplications")];
+    NSMutableArray *arrM = [NSMutableArray array];
+    for (id object in LSApplicationProxy_objects) {
+        id retVal = [object performSelector:NSSelectorFromString(@"applicationIdentifier")];
+        if (retVal) {
+            [arrM addObject:retVal];
+        }
+    }
+    return arrM;
+#pragma GCC diagnostic pop
+}
+@end

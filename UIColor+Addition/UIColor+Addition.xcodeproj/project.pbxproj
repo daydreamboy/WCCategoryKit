@@ -13,6 +13,7 @@
 		2BB702C21CBE22110044C27B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BB702C01CBE22110044C27B /* LaunchScreen.storyboard */; };
 		2BB702CE1CBE22210044C27B /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB702CD1CBE22210044C27B /* Test.m */; };
 		2BB702D71CBE22690044C27B /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB702D61CBE22690044C27B /* RootViewController.m */; };
+		4F4D748D20BE914D0027DE7C /* StringColorConvertionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4D748C20BE914D0027DE7C /* StringColorConvertionViewController.m */; };
 		4FBC37C71F9DD93E0082C6F2 /* UIColor+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC37C61F9DD93E0082C6F2 /* UIColor+Addition.m */; };
 		4FBC37CD1F9DD97B0082C6F2 /* RandomColorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC37CA1F9DD97B0082C6F2 /* RandomColorsViewController.m */; };
 		4FBC37CE1F9DD97B0082C6F2 /* TransitionColorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FBC37CC1F9DD97B0082C6F2 /* TransitionColorsViewController.m */; };
@@ -41,6 +42,8 @@
 		2BB702CF1CBE22210044C27B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BB702D51CBE22690044C27B /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2BB702D61CBE22690044C27B /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		4F4D748B20BE914C0027DE7C /* StringColorConvertionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringColorConvertionViewController.h; sourceTree = "<group>"; };
+		4F4D748C20BE914D0027DE7C /* StringColorConvertionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringColorConvertionViewController.m; sourceTree = "<group>"; };
 		4FBC37C51F9DD93E0082C6F2 /* UIColor+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Addition.h"; sourceTree = "<group>"; };
 		4FBC37C61F9DD93E0082C6F2 /* UIColor+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Addition.m"; sourceTree = "<group>"; };
 		4FBC37C91F9DD97B0082C6F2 /* RandomColorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomColorsViewController.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 				4FBC37CA1F9DD97B0082C6F2 /* RandomColorsViewController.m */,
 				4FBC37CB1F9DD97B0082C6F2 /* TransitionColorsViewController.h */,
 				4FBC37CC1F9DD97B0082C6F2 /* TransitionColorsViewController.m */,
+				4F4D748B20BE914C0027DE7C /* StringColorConvertionViewController.h */,
+				4F4D748C20BE914D0027DE7C /* StringColorConvertionViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4D748D20BE914D0027DE7C /* StringColorConvertionViewController.m in Sources */,
 				2BB702B71CBE22110044C27B /* AppDelegate.m in Sources */,
 				4FBC37CD1F9DD97B0082C6F2 /* RandomColorsViewController.m in Sources */,
 				2BB702D71CBE22690044C27B /* RootViewController.m in Sources */,

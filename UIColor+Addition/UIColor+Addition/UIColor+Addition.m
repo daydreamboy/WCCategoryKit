@@ -71,6 +71,7 @@
 
 #pragma mark - Color Convertion
 
+#pragma mark > UIColor to NSString
 + (NSString *)RGBAHexStringWithColor:(UIColor *)color {
     CGFloat r, g, b, a;
     [self componentsOfRed:&r green:&g blue:&b alpha:&a fromColor:color];
@@ -92,6 +93,36 @@
             lroundf(g * 255),
             lroundf(b * 255)
             ];
+}
+
+#pragma mark > NSString to UIColor
+
++ (UIColor *)colorWithHexString:(NSString *)string {
+    if (![string isKindOfClass:[NSString class]]) {
+        return nil;
+    }
+    
+    if (![string hasPrefix:@"#"] || (string.length != 7 && string.length != 9)) {
+        return nil;
+    }
+    
+    // Note: -1 as failure flag
+    int r = -1, g = -1, b = -1, a = -1;
+    
+    if (string.length == 7) {
+        a = 0xFF;
+        sscanf([string UTF8String], "#%02x%02x%02x", &r, &g, &b);
+    }
+    else if (string.length == 9) {
+        sscanf([string UTF8String], "#%02x%02x%02x%02x", &r, &g, &b, &a);
+    }
+    
+    if (r == -1 || g == -1 || b == -1 || a == -1) {
+        // parse hex failed
+        return nil;
+    }
+    
+    return [UIColor colorWithRed:r / 255.0 green:g / 255.0 blue:b / 255.0 alpha:a / 255.0];
 }
 
 #pragma mark - Color Checks

@@ -11,6 +11,8 @@
 @interface WCDeviceTool : NSObject
 @end
 
+#pragma mark - Memory
+
 @interface WCDeviceTool (Memory)
 + (double)systemAvailableMemory;
 + (double)processMemoryResident;
@@ -23,4 +25,17 @@
  @note https://forums.developer.apple.com/thread/52186
  */
 + (double)processMemoryFootprint;
+@end
+
+#pragma mark - System
+
+@interface WCDeviceTool (System)
+
+/**
+ Get all installed apps' bundle IDs
+
+ @return the bundle IDs for installed apps
+ @see https://stackoverflow.com/a/38345120
+ */
++ (NSArray<NSString *> *)allInstalledApps;
 @end

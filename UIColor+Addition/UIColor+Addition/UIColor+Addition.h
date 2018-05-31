@@ -18,8 +18,19 @@
 
 #pragma mark - Color Convertion
 
+#pragma mark > UIColor to NSString
 + (NSString *)RGBHexStringWithColor:(UIColor *)color;
 + (NSString *)RGBAHexStringWithColor:(UIColor *)color;
+
+#pragma mark > NSString to UIColor
+
+/**
+ Convert hex string to UIColor
+
+ @param string the hex string with foramt @"#RRGGBB" or @"#RRGGBBAA"
+ @return the UIColor object. return nil if string is not valid.
+ */
++ (UIColor *)colorWithHexString:(NSString *)string;
 
 #pragma mark - Color Checks
 
