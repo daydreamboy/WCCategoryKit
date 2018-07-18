@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2BFD344C1AD91AF600F91188 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD344B1AD91AF600F91188 /* Test.m */; };
 		2BFD34531AD91B2100F91188 /* NSDictionary+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD34521AD91B2100F91188 /* NSDictionary+Addition.m */; };
+		4F32D0F220FF564F00D68A32 /* WCNSDictionaryTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F32D0F120FF564F00D68A32 /* WCNSDictionaryTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +18,8 @@
 		2BFD344B1AD91AF600F91188 /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		2BFD34511AD91B2100F91188 /* NSDictionary+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Addition.h"; sourceTree = "<group>"; };
 		2BFD34521AD91B2100F91188 /* NSDictionary+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Addition.m"; sourceTree = "<group>"; };
+		4F32D0F020FF564F00D68A32 /* WCNSDictionaryTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCNSDictionaryTool.h; sourceTree = "<group>"; };
+		4F32D0F120FF564F00D68A32 /* WCNSDictionaryTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCNSDictionaryTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 		2BFD343B1AD91AEE00F91188 = {
 			isa = PBXGroup;
 			children = (
+				4F32D0EF20FF560C00D68A32 /* WCNSDictionaryTool */,
 				2BFD34501AD91B0C00F91188 /* NSDictionary+Addition */,
 				2BFD34481AD91AF600F91188 /* Test */,
 				2BFD34471AD91AF600F91188 /* Products */,
@@ -71,6 +75,15 @@
 				2BFD34521AD91B2100F91188 /* NSDictionary+Addition.m */,
 			);
 			path = "NSDictionary+Addition";
+			sourceTree = "<group>";
+		};
+		4F32D0EF20FF560C00D68A32 /* WCNSDictionaryTool */ = {
+			isa = PBXGroup;
+			children = (
+				4F32D0F020FF564F00D68A32 /* WCNSDictionaryTool.h */,
+				4F32D0F120FF564F00D68A32 /* WCNSDictionaryTool.m */,
+			);
+			path = WCNSDictionaryTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +153,7 @@
 			files = (
 				2BFD34531AD91B2100F91188 /* NSDictionary+Addition.m in Sources */,
 				2BFD344C1AD91AF600F91188 /* Test.m in Sources */,
+				4F32D0F220FF564F00D68A32 /* WCNSDictionaryTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

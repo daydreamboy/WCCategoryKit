@@ -59,14 +59,6 @@ FOUNDATION_EXPORT NSString* BinaryStringFromInt8(int8_t intValue);
 
 #pragma mark - Handle String As Specific Strings
 
-#pragma mark > Handle String As Url
-
-/// get value for key like `key1=value1&key2=value2`
-- (NSString *)valueOfUrlForKey:(NSString *)key;
-- (NSString *)valueOfUrlForKey:(NSString *)key usingConnector:(NSString *)connector usingSeparator:(NSString *)separator;
-/// get key/value like `key1=value1&key2=value2`
-- (NSDictionary *)urlKeyValues;
-
 #pragma mark > Handle String As Path
 
 - (NSString *)stringWithPathRelativeTo:(NSString *)anchorPath;
