@@ -59,11 +59,11 @@
     // red to magentaColor
     destImage = [WCImageTool setImage:destImage replaceColorComponents:red toColor:[UIColor magentaColor]];
 //    // green to grayColor
-//    destImage = [WCImageTool setImage:destImage replaceColorComponents:green toColor:[UIColor grayColor]];
+//    destImage = [WCImageTool imageWithImage:destImage replaceColorComponents:green toColor:[UIColor grayColor]];
 //    // blue to blackColor
-//    destImage = [WCImageTool setImage:destImage replaceColorComponents:blue toColor:[UIColor blackColor]];
+//    destImage = [WCImageTool imageWithImage:destImage replaceColorComponents:blue toColor:[UIColor blackColor]];
 //    // yellow to orangeColor
-//    destImage = [WCImageTool setImage:destImage replaceColorComponents:yellow toColor:[UIColor orangeColor]];
+//    destImage = [WCImageTool imageWithImage:destImage replaceColorComponents:yellow toColor:[UIColor orangeColor]];
     
     self.imageViewChanged.image = destImage;
 }

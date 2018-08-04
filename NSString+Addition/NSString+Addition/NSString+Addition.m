@@ -112,60 +112,6 @@ NSString* BinaryStringFromInt8(int8_t intValue) {
 
 @implementation NSString (Addition)
 
-#pragma mark - Substring String
-
-/*!
- *  Subtring at location with length
- *
- *  @param location Started by 0
- *  @param length   If length exceed the left length (total length - location), will substring left all characters from the location
- *
- *  @return nil, if location out of the string index [0..self.length]
- */
-- (NSString *)substringAtLocation:(NSUInteger)location length:(NSUInteger)length {
-    
-    if (location < self.length) {
-        
-        if (length < self.length - location) {
-            return [self substringWithRange:NSMakeRange(location, length)];
-        }
-        else {
-            // Now substring from loc to the end of string
-            return [self substringFromIndex:location];
-        }
-    }
-    else {
-        return nil;
-    }
-}
-
-/*!
- *  从字符串中抽取第一个符合characterSet的子字符串
- *
- *  @param characterSet 匹配字符的集合
- *
- *  @return 匹配characterSet的第一个子字符串。如果没有匹配的子字符串，返回nil
- *  @code
- // Input
- NSString *originalString = @"*_?.幸运号This's my string：01234adbc5678";
- 
- NSString *numberString = [originalString firstSubstringInCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
- NSLog(@"%@", numberString); // 01234
- */
-- (NSString *)firstSubstringInCharacterSet:(NSCharacterSet *)characterSet {
-    NSString *substring = nil;
-    
-    NSScanner *scanner = [NSScanner scannerWithString:self];
-    
-    // Throw away characters before matching the first character in characterSet
-    [scanner scanUpToCharactersFromSet:characterSet intoString:NULL];
-    
-    // Start collecting characters in characterSet until not matching the first character in the characterSet
-    [scanner scanCharactersFromSet:characterSet intoString:&substring];
-    
-    return substring;
-}
-
 #pragma mark - String Modification
 
 /*!

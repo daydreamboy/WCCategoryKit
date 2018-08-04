@@ -132,7 +132,7 @@
 		2BE931131B6B5D1900780B57 = {
 			isa = PBXGroup;
 			children = (
-				2BE931281B6B5D4900780B57 /* UIImage+Addition */,
+				2BE931281B6B5D4900780B57 /* WCImageTool */,
 				2B65D3BD1CC61F1900E8AE00 /* AppTest */,
 				2BE9311F1B6B5D2700780B57 /* Products */,
 			);
@@ -146,13 +146,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2BE931281B6B5D4900780B57 /* UIImage+Addition */ = {
+		2BE931281B6B5D4900780B57 /* WCImageTool */ = {
 			isa = PBXGroup;
 			children = (
 				4F5F6B8E209C553300A35A12 /* WCImageTool.h */,
 				4F5F6B8F209C553300A35A12 /* WCImageTool.m */,
 			);
-			path = "UIImage+Addition";
+			path = WCImageTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -37,11 +37,6 @@ FOUNDATION_EXPORT NSString* BinaryStringFromInt8(int8_t intValue);
 
 @interface NSString (Addition)
 
-#pragma mark - Substring String
-
-- (NSString *)substringAtLocation:(NSUInteger)location length:(NSUInteger)length;
-- (NSString *)firstSubstringInCharacterSet:(NSCharacterSet *)characterSet;
-
 #pragma mark - String Modification
 
 - (NSString *)insertSeparator:(NSString *)separator atInterval:(NSInteger)interval;

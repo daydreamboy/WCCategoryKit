@@ -55,7 +55,7 @@
 
 #pragma mark - Image Modify
 
-+ (UIImage *)setImage:(UIImage *)image templateColor:(UIColor *)templateColor;
++ (UIImage *)imageWithImage:(UIImage *)image templateColor:(UIColor *)templateColor;
 + (UIImage *)setImage:(UIImage *)image replaceColorComponents:(CGFloat[6])components toColor:(UIColor *)color;
 
 @end

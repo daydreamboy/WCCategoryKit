@@ -96,7 +96,7 @@
  @param templateColor the template color which is a pure color
  @return an image which is a template shadow applied with template color
  */
-+ (UIImage *)setImage:(UIImage *)image templateColor:(UIColor *)templateColor {
++ (UIImage *)imageWithImage:(UIImage *)image templateColor:(UIColor *)templateColor {
     UIImage *newImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
     UIGraphicsBeginImageContextWithOptions(newImage.size, NO, newImage.scale);
