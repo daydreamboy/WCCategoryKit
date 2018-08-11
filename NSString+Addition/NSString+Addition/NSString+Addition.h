@@ -68,12 +68,6 @@ FOUNDATION_EXPORT NSString* BinaryStringFromInt8(int8_t intValue);
 - (NSString *)urlDecodedString;
 - (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding;
 
-#pragma mark > JSON String to id/NSArray/NSDictionary
-
-- (id)jsonObject NS_AVAILABLE_IOS(5_0);
-- (NSArray *)jsonArray NS_AVAILABLE_IOS(5_0);
-- (NSDictionary *)jsonDict NS_AVAILABLE_IOS(5_0);
-
 #pragma mark > Escape/Unescape String
 
 - (NSString *)jsonEscapedString;

@@ -195,49 +195,6 @@
     XCTAssertEqualObjects([@"%E5%88%B7%E6%96%B0%E8%BF%87%E4%BA%8E%E9%A2%91%E7%B9%81%EF%BC%8C%E8%AF%B7%E7%A8%8D%E5%90%8E%E5%86%8D%E8%AF%95" urlDecodedString], @"刷新过于频繁，请稍后再试");
 }
 
-#pragma mark - Convert JSON string to NSArray/NSDictionary
-
-- (void)test_jsonObject {
-    NSString *jsonDictString = @"{\"result_code\":\"9999\",\"message\":\"ok\",\"conf\":{\"d\":\"E9F8EE6FA52D548711BA59DEFABD948C\",\"switch\":\"1\",\"issync\":\"1\",\"mode\":\"2\",\"infoSwitch\":\"0\"}}";
-    NSDictionary *dict = [jsonDictString jsonObject];
-    XCTAssertTrue([dict isKindOfClass:[NSDictionary class]]);
-    
-    NSString *jsonArrayString = @"[{\"id\": \"1\", \"name\":\"Aaa\"}, {\"id\": \"2\", \"name\":\"Bbb\"}]";
-    NSArray *arr = [jsonArrayString jsonObject];
-    XCTAssertTrue([arr isKindOfClass:[NSArray class]]);
-    
-    NSString *plainString = @"hello, world]";
-    id jsonObject = [plainString jsonObject];
-    XCTAssertNil(jsonObject);
-}
-
-- (void)test_jsonDict {
-    NSString *jsonDictString = @"{\"result_code\":\"9999\",\"message\":\"ok\",\"conf\":{\"d\":\"E9F8EE6FA52D548711BA59DEFABD948C\",\"switch\":\"1\",\"issync\":\"1\",\"mode\":\"2\",\"infoSwitch\":\"0\"}}";
-    NSDictionary *dict = [jsonDictString jsonDict];
-    XCTAssert([dict isKindOfClass:[NSDictionary class]], @"%@ should be NSDictionary", dict);
-    
-    NSLog(@"%@", [dict valueForKeyPath:@"result_code"]);
-    NSLog(@"%@", [dict valueForKeyPath:@"conf.infoSwitch"]);
-    
-    NSString *jsonArrayString = @"[{\"id\": \"1\", \"name\":\"Aaa\"}, {\"id\": \"2\", \"name\":\"Bbb\"}]";
-    NSDictionary *fakeDict = [jsonArrayString jsonDict];
-    XCTAssertNil(fakeDict, @"%@ should be nil", fakeDict);
-    
-    XCTAssertEqualObjects(@(1), [@"{\"\":true}" jsonDict][@""]);
-    XCTAssertEqualObjects(@(0), [@"{\"\":false}" jsonDict][@""]);
-    XCTAssertEqualObjects([NSNull null], [@"{\"\":null}" jsonDict][@""]);
-}
-
-- (void)test_jsonArray {
-    NSString *jsonArrayString = @"[{\"id\": \"1\", \"name\":\"Aaa\"}, {\"id\": \"2\", \"name\":\"Bbb\"}]";
-    NSArray *arr = [jsonArrayString jsonArray];
-    XCTAssert([arr isKindOfClass:[NSArray class]], @"%@ should be NSArray", arr);
-    
-    NSString *jsonDictString = @"{\"result_code\":\"9999\",\"message\":\"ok\",\"conf\":{\"d\":\"E9F8EE6FA52D548711BA59DEFABD948C\",\"switch\":\"1\",\"issync\":\"1\",\"mode\":\"2\",\"infoSwitch\":\"0\"}}";
-    NSArray *fakedArr = [jsonDictString jsonArray];
-    XCTAssertNil(fakedArr, @"%@ should be nil", fakedArr);
-}
-
 #pragma mark - Convert NSString to JSON string
 
 - (void)test_jsonEscapedString {

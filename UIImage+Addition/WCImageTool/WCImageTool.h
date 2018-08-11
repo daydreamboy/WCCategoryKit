@@ -58,4 +58,8 @@
 + (UIImage *)imageWithImage:(UIImage *)image templateColor:(UIColor *)templateColor;
 + (UIImage *)setImage:(UIImage *)image replaceColorComponents:(CGFloat[6])components toColor:(UIColor *)color;
 
+#pragma mark - Image Access
+
++ (NSURL *)PNGImageURLWithImageName:(NSString *)imageName inResourceBundle:(NSString *)resourceBundleName;
+
 @end

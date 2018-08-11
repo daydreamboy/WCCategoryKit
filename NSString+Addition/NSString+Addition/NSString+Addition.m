@@ -441,64 +441,6 @@ NSString* BinaryStringFromInt8(int8_t intValue) {
     return string;
 }
 
-#pragma mark > JSON String to id/NSArray/NSDictionary
-
-/*!
- *  Convert the string to NSArray or NSDictionary object using JSON format
- *
- *  @return If the string is not JSON formatted, return nil.
- */
-- (id)jsonObject {
-    NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
-    if (!jsonData) {
-        return nil;
-    }
-    
-    @try {
-        NSError *error;
-        id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-        if (!jsonObject) {
-            NSLog(@"[%@] error parsing JSON: %@", NSStringFromClass([self class]), error);
-        }
-        return jsonObject;
-    }
-    @catch (NSException *exception) {
-        NSLog(@"[%@] an exception occured:\n%@", NSStringFromClass([self class]), exception);
-    }
-    
-    return nil;
-}
-
-/*!
- *  Convert the string to NSArray object using JSON format
- *
- *  @return If the string is not JSON formatted or a JSON array object, return nil.
- */
-- (NSArray *)jsonArray {
-    NSArray *jsonArray = [self jsonObject];
-    if ([jsonArray isKindOfClass:[NSArray class]]) {
-        return jsonArray;
-    }
-    else {
-        return nil;
-    }
-}
-
-/*!
- *  Convert the string to NSDictionary object using JSON format
- *
- *  @return If the string is not JSON formatted or a JSON dictionary object, return nil.
- */
-- (NSDictionary *)jsonDict {
-    NSDictionary *jsonDict = [self jsonObject];
-    if ([jsonDict isKindOfClass:[NSDictionary class]]) {
-        return jsonDict;
-    }
-    else {
-        return nil;
-    }
-}
-
 #pragma mark > Escape/Unescape String
 
 /*!
