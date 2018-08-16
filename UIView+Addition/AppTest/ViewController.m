@@ -19,8 +19,6 @@
 
 - (void)viewDidLoad {
     
-    [UIView enableDebugFrame:YES];
-    
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -42,30 +40,6 @@
     [self.view hierarchalDescription];
     
     
-}
-
-- (void)switchToggled:(UISwitch *)sender {
-    if (sender.on) {
-        [UIView enableDebugFrame:YES];
-//        [self.view setNeedsLayout];
-//        NSArray *windows = [[UIApplication sharedApplication] windows];
-//        for (UIWindow *window in windows) {
-//            [window setNeedsLayout];
-//            [window layoutIfNeeded];
-//        }
-//        [self.view setNeedsLayout];
-//        [self.view layoutIfNeeded];
-//        [[[UIApplication sharedApplication] keyWindow] setNeedsLayout];
-        
-    }
-    else {
-        [UIView enableDebugFrame:NO];
-//        NSArray *windows = [[UIApplication sharedApplication] windows];
-//        for (UIWindow *window in windows) {
-//            [window setNeedsLayout];
-//            [window layoutIfNeeded];
-//        }
-    }
 }
 
 @end

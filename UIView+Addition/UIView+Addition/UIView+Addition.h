@@ -8,29 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Frame)
+@interface UIView (Addition)
 
-/*!
- *  Addition parameter for passing data in UIAlertView | UIActionSheet's delegate methods
+/**
+ Attatch an associated user object to the view. Usually used for UIAlertView or UIActionSheet
  */
-@property (nonatomic, strong) id userInfo;
+@property (nonatomic, strong) id associatedUserObject;
 
-#pragma mark - Debug
-
-//
-+ (void)enableDebugFrame:(BOOL)enabled;
-//+ (void)enableDebugFrame:(BOOL)enabled usingFilterClasses:(NSArray *)filterClasses;
-//+ (void)enableDebugFrame:(BOOL)enabled usingWatchedClasses:(NSArray *)watchedClasses;
-
-#pragma mark - Tagging Single View
-
-@property (nonatomic, strong) UIView *taggedView;
-
-#pragma mark - Tagging Multiple Views
-
-/// multiple tagged views
-- (void)setTaggedView:(UIView *)taggedView forKey:(NSString *)key;
-- (UIView *)taggedViewForKey:(NSString *)key;
-- (void)removeAllTaggedViews;
+/**
+ Set a pair of key-value in associatedUserInfo which is attached to the view.
+ */
+@property (nonatomic, strong, readonly) NSMutableDictionary *associatedUserInfo;
 
 @end
