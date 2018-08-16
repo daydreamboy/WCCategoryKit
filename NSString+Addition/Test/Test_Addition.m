@@ -153,48 +153,6 @@
     // TODO: test here
 }
 
-/**
- *  @sa https://en.wikipedia.org/wiki/Percent-encoding
- *  @sa online tool: http://meyerweb.com/eric/tools/dencoder/
- */
-- (void)test_urlEncodedString {
-    // Test unescape characters [].
-    XCTAssertEqualObjects([@"[" urlEncodedString], @"[");
-    XCTAssertEqualObjects([@"]" urlEncodedString], @"]");
-    XCTAssertEqualObjects([@"." urlEncodedString], @".");
-    
-    // Test escape characters :/?&=;+!@#$()',*
-    XCTAssertEqualObjects([@":" urlEncodedString], @"%3A");
-    XCTAssertEqualObjects([@"/" urlEncodedString], @"%2F");
-    XCTAssertEqualObjects([@"?" urlEncodedString], @"%3F");
-    XCTAssertEqualObjects([@"&" urlEncodedString], @"%26");
-    XCTAssertEqualObjects([@"=" urlEncodedString], @"%3D");
-    XCTAssertEqualObjects([@";" urlEncodedString], @"%3B");
-    XCTAssertEqualObjects([@"+" urlEncodedString], @"%2B");
-    XCTAssertEqualObjects([@"!" urlEncodedString], @"%21");
-    XCTAssertEqualObjects([@"@" urlEncodedString], @"%40");
-    XCTAssertEqualObjects([@"#" urlEncodedString], @"%23");
-    XCTAssertEqualObjects([@"$" urlEncodedString], @"%24");
-    XCTAssertEqualObjects([@"(" urlEncodedString], @"%28");
-    XCTAssertEqualObjects([@")" urlEncodedString], @"%29");
-    XCTAssertEqualObjects([@"'" urlEncodedString], @"%27");
-    XCTAssertEqualObjects([@"," urlEncodedString], @"%2C");
-    XCTAssertEqualObjects([@"*" urlEncodedString], @"%2A");
-    
-    // Letters and numbers
-    XCTAssertEqualObjects([@"a" urlEncodedString], @"a");
-    XCTAssertEqualObjects([@"Z" urlEncodedString], @"Z");
-    XCTAssertEqualObjects([@"0" urlEncodedString], @"0");
-    XCTAssertEqualObjects([@"1234567890" urlEncodedString], @"1234567890");
-    
-    // Non-ASCII characters
-    XCTAssertEqualObjects([@"中文" urlEncodedString], @"%E4%B8%AD%E6%96%87");
-}
-
-- (void)test_urlDecodedString {
-    XCTAssertEqualObjects([@"%E5%88%B7%E6%96%B0%E8%BF%87%E4%BA%8E%E9%A2%91%E7%B9%81%EF%BC%8C%E8%AF%B7%E7%A8%8D%E5%90%8E%E5%86%8D%E8%AF%95" urlDecodedString], @"刷新过于频繁，请稍后再试");
-}
-
 #pragma mark - Convert NSString to JSON string
 
 - (void)test_jsonEscapedString {

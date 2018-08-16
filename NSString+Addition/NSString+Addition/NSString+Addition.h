@@ -63,7 +63,7 @@ FOUNDATION_EXPORT NSString* BinaryStringFromInt8(int8_t intValue);
 #pragma mark > Url Encode/Decode
 
 /// encode with UTF8
-- (NSString *)urlEncodedString;
+- (NSString *)urlEncodedString API_DEPRECATED("not support");
 /// decode with UTF8
 - (NSString *)urlDecodedString;
 - (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding;
