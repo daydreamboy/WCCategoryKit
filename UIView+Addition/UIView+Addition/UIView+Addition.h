@@ -20,4 +20,9 @@
  */
 @property (nonatomic, strong, readonly) NSMutableDictionary *associatedUserInfo;
 
+/**
+ Set a pair of key-value in associatedWeakUserInfo which is attached to the view. And the value is weakly hold
+ */
+@property (nonatomic, strong, readonly) NSMapTable *associatedWeakUserInfo;
+
 @end

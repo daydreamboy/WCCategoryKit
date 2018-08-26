@@ -13,6 +13,7 @@
 
 @dynamic associatedUserObject;
 @dynamic associatedUserInfo;
+@dynamic associatedWeakUserInfo;
 
 - (void)setAssociatedUserObject:(id)userObject {
     objc_setAssociatedObject(self, @selector(associatedUserObject), userObject, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -35,6 +36,21 @@
     }
     
     return dictM;
+}
+
+- (NSMapTable *)associatedWeakUserInfo {
+    NSMapTable *tableStrongToWeak = objc_getAssociatedObject(self, @selector(associatedWeakUserInfo));
+    
+    if (tableStrongToWeak == nil) {
+        @synchronized(self) {
+            if (tableStrongToWeak == nil) {
+                tableStrongToWeak = [NSMapTable strongToWeakObjectsMapTable];
+                objc_setAssociatedObject(tableStrongToWeak, @selector(associatedWeakUserInfo), tableStrongToWeak, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+            }
+        }
+    }
+    
+    return tableStrongToWeak;
 }
 
 @end
