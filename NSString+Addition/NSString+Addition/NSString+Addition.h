@@ -63,7 +63,7 @@ FOUNDATION_EXPORT NSString* BinaryStringFromInt8(int8_t intValue);
 #pragma mark > Url Encode/Decode
 
 /// encode with UTF8
-- (NSString *)urlEncodedString API_DEPRECATED("not support");
+- (NSString *)urlEncodedString;
 /// decode with UTF8
 - (NSString *)urlDecodedString;
 - (NSString *)urlEncodedStringWithEncoding:(NSStringEncoding)encoding;
@@ -103,17 +103,17 @@ FOUNDATION_EXPORT NSString* BinaryStringFromInt8(int8_t intValue);
 - (NSString *)spacedStringWithFormat:(NSString *)formatString;
 + (NSString *)stringWithFormat:(NSString *)format array:(NSArray *)arguments;
 
-#pragma mark - String Validation
-
-- (BOOL)charactersAscendOrDescendWithLength:(NSInteger)length;
-- (BOOL)uniformedBySingleCharacter;
-- (BOOL)noneNegativeInteger;
-- (BOOL)positiveInteger;
-- (BOOL)composedOfNumbers;
-- (BOOL)composedOfLetters;
-- (BOOL)composedOfLettersLowercase;
-- (BOOL)composedOfLettersUppercase;
-- (BOOL)composedOfChineseCharacters;
-- (BOOL)alphanumeric;
+//#pragma mark - String Validation
+//
+//- (BOOL)charactersAscendOrDescendWithLength:(NSInteger)length;
+//- (BOOL)uniformedBySingleCharacter;
+//- (BOOL)noneNegativeInteger;
+//- (BOOL)positiveInteger;
+//- (BOOL)composedOfNumbers;
+//- (BOOL)composedOfLetters;
+//- (BOOL)composedOfLettersLowercase;
+//- (BOOL)composedOfLettersUppercase;
+//- (BOOL)composedOfChineseCharacters;
+//- (BOOL)alphanumeric;
 
 @end

@@ -44,36 +44,8 @@
 
 #pragma mark - Subtring
 
-- (void)test_substringAtLocation_length {
-    
-    NSString *str1 = @"2014-11-07 18:36:04";
-    XCTAssertEqualObjects(@"11-07", [str1 substringAtLocation:5 length:5]);
-    XCTAssertEqualObjects(@"18:36:04", [str1 substringAtLocation:11 length:NSUIntegerMax]);
-    XCTAssertEqualObjects(@"4", [str1 substringAtLocation:str1.length - 1 length:1]);
-    XCTAssertEqualObjects(@"4", [str1 substringAtLocation:str1.length - 1 length:4]);
-    XCTAssertEqualObjects(@"", [@"abc" substringAtLocation:0 length:0]);
-    XCTAssertEqualObjects(@"a", [@"abc" substringAtLocation:0 length:1]);
-    
-    XCTAssertNil([str1 substringAtLocation:str1.length length:1]);
-    XCTAssertNil([@"" substringAtLocation:0 length:1]);
-    XCTAssertNil([@"" substringAtLocation:0 length:0]);
-    NSString *nilString = nil;
-    XCTAssertNil([nilString substringAtLocation:0 length:1]);
-}
-
 - (void)test_firstSubstringInCharacterSet {
-    NSString *originalString;
-    NSString *substring;
-    
-    // case 1
-    originalString = @"*_?.幸运号This's my string：01234adbc5678";
-    substring = [originalString firstSubstringInCharacterSet:[NSCharacterSet decimalDigitCharacterSet]];
-    XCTAssertEqualObjects(substring, @"01234");
-    
-    // case 2
-    originalString = @"*_?.This's my string.";
-    substring = [originalString firstSubstringInCharacterSet:[NSCharacterSet characterSetWithCharactersInString:@"0123456789"]];
-    XCTAssertNil(substring);
+
 }
 
 - (void)test_stripHTMLTags {
